@@ -9,10 +9,11 @@
 
 - (instancetype)initWithIDeckLinkProfileAttributes:(IDeckLinkProfileAttributes*)pa
 {
-	if (self = [super init])
+	if (self = [super initWithIUnknown:pa refiid:IID_IDeckLinkProfileAttributes])
 	{
 		_profileAttributes = pa;  // should we addref?
-		_profileAttributes->AddRef();
+		NSLog(@"profile attributes addref count: %u",_profileAttributes->AddRef());
+		//_profileAttributes->AddRef();
 	}
 	return self;
 }

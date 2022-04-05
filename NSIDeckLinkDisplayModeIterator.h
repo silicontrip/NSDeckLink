@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+#import "NSIDeckLinkDisplayMode.h"
 
 @interface NSIDeckLinkDisplayModeIterator : NSIUnknown <NSFastEnumeration>
 {

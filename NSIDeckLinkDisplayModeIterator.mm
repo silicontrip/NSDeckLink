@@ -19,7 +19,6 @@
 -(NSIDeckLinkDisplayModeIterator*)nextObject
 {
 	IDeckLink* lp = NULL;
-	//IDeckLink* deckLink = nil;
 
 	if (_displayModeIterator->Next(&lp) == S_OK)
 		return (NSIDeckLinkDisplayModeIterator*)[NSIDeckLinkDisplayModeIterator displayModeIteratorWithIDisplayModeIterator:lp];
