@@ -20,6 +20,8 @@
 	return self;
 }
 
+// want to come up with a better way to report failures
+
 - (BOOL)supportsVideoModeConnection:(BMDVideoConnection)connection mode:(BMDDisplayMode)mode pixelFormat:(BMDPixelFormat)pixelFormat conversion:(BMDVideoOutputConversionMode)conversion flags:(BMDSupportedVideoModeFlags)flags
 {
 	//BMDDisplayMode actualMode = NULL;

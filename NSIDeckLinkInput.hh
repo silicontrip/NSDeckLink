@@ -5,7 +5,8 @@
 	IDeckLinkInput *_deckLinkInput;
 }
 
-+ (NSIDeckLinkInput*)deckLinkInputWithDeckLinkInput:(IDeckLinkInput*)deckLinkInput;
++ (NSIDeckLinkInput*)inputWithDeckLinkInput:(IDeckLinkInput*)deckLinkInput;
 - (instancetype)initWithDeckLinkInput:(IDeckLinkInput*)deckLinkInput;
+
 
 @end

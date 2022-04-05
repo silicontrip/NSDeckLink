@@ -19,7 +19,7 @@
 - (BOOL)disableAudioInput;
 - (NSUInteger)availableAudioSampleFrameCount;
 
-// allocators seem to be a Core Foundation thing
+// allocators seem to be a Core Foundation thing not an NS Foundation thing
 // setVideoInputFrameMemoryAllocator:(NSIDeckLinkMemoryAllocator*)theAllocator;
 
 - (BOOL)startStreams;
