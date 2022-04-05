@@ -18,14 +18,14 @@
 	return [[[NSIDeckLinkIterator alloc] init] autorelease];
 }
 
-// // CreateDeckLinkAPIInformationInstance
+//// CreateDeckLinkAPIInformationInstance
 
 - (instancetype)init
 {
-	if (self = [super init])
+	IDeckLinkIterator* decklinkiterator = CreateDeckLinkIteratorInstance();
+	if (self = [super initWithIUnknown:decklinkiterator refiid:IID_IDeckLinkIterator])
 	{
-		_refiid = IID_IDeckLinkIterator;
-		_iDeckLinkIterator = CreateDeckLinkIteratorInstance();
+		_iDeckLinkIterator =  decklinkiterator;
 	}
 	return self;
 }
@@ -56,12 +56,8 @@
 	IDeckLink* lp = NULL;
 	IDeckLinkIterator *iter = (IDeckLinkIterator *)state->extra[0];
 
-	HRESULT rr = iter->Next(&lp);
-
-	if (rr != S_OK)
-	{
-		return 0;
-	}
+	if (iter->Next(&lp) != S_OK)
+		return 0;	
 
 	NSIDeckLink* dl = [NSIDeckLink deckLinkWithIDeckLink:lp];  
 	state->itemsPtr = &dl;
