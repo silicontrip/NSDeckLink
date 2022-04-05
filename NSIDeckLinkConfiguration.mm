@@ -9,10 +9,10 @@
 
 - (instancetype)initWithIDeckLinkConfiguration:(IDeckLinkConfiguration*)pa
 {
-	if (self = [super init])
+	if (self = [super initWithIUnknown:pa refiid:IID_IDeckLinkConfiguration])
 	{
 		_configuration = pa;  // should we addref?
-		_configuration->AddRef();
+		//_configuration->AddRef();
 	}
 	return self;
 }
@@ -82,6 +82,5 @@
 	if (hr != S_OK)
 		NSLog(@"Error setting string for attribute %d", cfgID);
 }
-
 
 @end
