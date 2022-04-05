@@ -4,6 +4,7 @@
 
 - (void)release
 {
+	// NSLog(@"release: %@",self);
 	_refCount = _iunknown->Release();
 	[super release];
 }
@@ -42,12 +43,12 @@
 */
 // NSIUnknown iunknownWithIUnknown:refiid:
 
+//CPP
 + (NSIUnknown *)iunknownWithIUnknown:(IUnknown*)iunknown refiid:(REFIID)ref
 {
 	return [[[NSIUnknown alloc] initWithIUnknown:iunknown refiid:ref] autorelease];
 }
 
-//CPP
 
 - (instancetype)initWithIUnknown:(IUnknown*)iunknown refiid:(REFIID)ref
 {
@@ -120,7 +121,6 @@
 //- (void*)queryInterface:(REFIID)iid error:(NSError**)error
 - (NSIUnknown*)queryInterface:(REFIID)iid
 {
-
 	IUnknown* iunknown = NULL;
 
 	// CFTtypeRef lp;
@@ -136,7 +136,7 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%@: %@",[self class],[self iunknownTypeString]];
+	return [NSString stringWithFormat:@"%@: %@",[super description],[self iunknownTypeString]];
 }
 
 @end
