@@ -73,22 +73,23 @@
 
 - (instancetype)initWithIDeckLink:(IDeckLink*)decklink
 {
-	if (self = [super init])
+	if (self = [super initWithIUnknown:decklink refiid:IID_IDeckLink])
 	{
 		CFStringRef display = NULL;
 		CFStringRef model = NULL;
 
 		_iDeckLink = decklink; //TODO: handle multiple matches
-		_iDeckLink->AddRef();
-		_refiid = IID_IDeckLink;
+		// _iDeckLink->AddRef();
+		// _refiid = IID_IDeckLink;
 
 	 	if (_iDeckLink->GetDisplayName(&display) != S_OK)
 			return nil;
 
-		self.displayName = [(NSString*)display copy];
+		self.displayName = [(NSString*)display copy]; // release?
 
 	 	if (_iDeckLink->GetModelName(&model) != S_OK)
 			return nil;
+
 		self.modelName = [(NSString*)model copy];
 	}
 	return self;
@@ -99,23 +100,56 @@
 	 return [NSString stringWithFormat:@"%@: %@, %@",[super description],displayName,modelName];
 }
 
-// do these two both work
+
 - (NSIDeckLinkProfileAttributes*)profileAttributes
 {
 	// IDeckLinkProfileAttributes *pavalue;
 	// do we go via the C++ iUnknown call 
 	// or with our own NSIUnknown
-	LPVOID pav;
-	HRESULT hr = _iDeckLink->QueryInterface(IID_IDeckLinkProfileAttributes,&pav);  // what is the retain count at this point.
+	LPVOID lp;
+	HRESULT hr = _iDeckLink->QueryInterface(IID_IDeckLinkProfileAttributes,&lp);  // what is the retain count at this point. appears to be 2
+
 	if (hr != S_OK)
 		return nil;
 
-	return [NSIDeckLinkProfileAttributes attributesWithIDeckLinkProfileAttributes:(IDeckLinkProfileAttributes*)pav];
+	IDeckLinkProfileAttributes* idpa =(IDeckLinkProfileAttributes*)lp;
+	idpa->Release();
+
+	return [NSIDeckLinkProfileAttributes attributesWithIDeckLinkProfileAttributes:idpa];
 }
 
 - (NSIDeckLinkConfiguration*)configuration
 {
-	return (NSIDeckLinkConfiguration*)[self queryInterface:IID_IDeckLinkConfiguration];
+	//return (NSIDeckLinkConfiguration*)
+	// [self queryInterface:IID_IDeckLinkConfiguration];
+	LPVOID lp;
+	HRESULT hr = _iDeckLink->QueryInterface(IID_IDeckLinkConfiguration,&lp);  
+
+	if (hr != S_OK)
+		return nil;
+
+	IDeckLinkConfiguration* idc = (IDeckLinkConfiguration*)lp;
+	idc->Release(); // retain = 1
+
+	//NSLog(@"release reference: %u",idc->Release());
+	// what is the retain count at this point.
+
+	return [NSIDeckLinkConfiguration configurationWithIDeckLinkConfiguration:idc];
+}
+
+- (NSIDeckLinkInput*)input
+{
+
+	LPVOID lp;
+	HRESULT hr = _iDeckLink->QueryInterface(IID_IDeckLinkInput,&lp);  
+
+	if (hr != S_OK)
+		return nil;
+
+	IDeckLinkInput* idi = (IDeckLinkInput*)lp;
+	idi->Release();
+
+	return [NSIDeckLinkInput inputWithIDeckLinkInput:idi];
 }
 
 @end

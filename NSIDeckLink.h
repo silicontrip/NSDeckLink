@@ -5,6 +5,7 @@
 #import "DeckLinkAPI.h"
 #import "NSIDeckLinkProfileAttributes.h"
 #import "NSIDeckLinkConfiguration.h"
+#import "NSIDeckLinkInput.h"
 
 @interface NSIDeckLink : NSIUnknown {}
 
@@ -18,9 +19,11 @@
 //- (instancetype)initWithModelName:(NSString*)modelname;
 
 //- (NSIDeckLinkOutput*)output;
-//- (NSIDeckLinkInput*)input;
+- (NSIDeckLinkInput*)input;
 - (NSIDeckLinkConfiguration*)configuration;
 - (NSIDeckLinkProfileAttributes*)profileAttributes;
+//- (NSIDeckLinkProfileAttributes*)attr;
+
 //- (NSIDeckLinkStatus*)status;
 //- (NSIDeckLinkKeyer*)keyer;
 //- (NSIDeckLinkDeckControl*)deckControl;

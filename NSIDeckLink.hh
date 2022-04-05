@@ -4,6 +4,7 @@
 #import "NSIUnknown.hh"
 #import "NSIDeckLinkProfileAttributes.hh"
 #import "NSIDeckLinkConfiguration.hh"
+#import "NSIDeckLinkInput.hh"
 
 @interface NSIDeckLink ()
 {
