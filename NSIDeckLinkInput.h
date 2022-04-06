@@ -3,6 +3,12 @@
 #import "NSIDeckLinkInputCallback.h"
 #import "NSIDeckLinkDisplayMode.h"
 
+typedef struct {
+	BMDTimeValue hardwareTime;
+	BMDTimeValue timeInFrame;
+	BMDTimeValue ticks;
+} NSHardwareReferenceClock;
+
 @interface NSIDeckLinkInput : NSIUnknown
 {
 }
@@ -35,6 +41,7 @@ timeInFrame:(BMDTimeValue*)timeInFrame
 ticksPerFrame:(BMDTimeValue*)ticks;
 */
 
+- (NSHardwareReferenceClock*)hardwareReferenceClockScale:(BMDTimeScale)timeScale;
 - (BMDTimeValue)hardwareTimeReferenceClockScale:(BMDTimeValue*)timeScale;
 - (BMDTimeValue)timeInFrameReferenceClockScale:(BMDTimeValue*)timeScale;
 - (BMDTimeValue)ticksPerFrameReferenceClockScale:(BMDTimeValue*)timeScale;
