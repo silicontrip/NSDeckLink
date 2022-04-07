@@ -99,11 +99,13 @@
 	return _deckLinkInput->EnableVideoInput(enable) == S_OK;
 }
 
-- (BOOL)setScreenPreviewCallback:(NSIDeckLinkScreenPreviewCallback*)previewCallback
+- (BOOL)setScreenPreviewCallback:(id<NSIDeckLinkScreenPreviewCallback>)previewCallback
 {
 	// encapsulate the NSIDeckLinkInputCallback in the C++ IDeckLinkInputCallback subclass
 
+	IDeckLinkScreenPreviewCallbackNS* screenPreview = new IDeckLinkScreenPreviewCallbackNS(previewCallback);
 	return _deckLinkInput->SetScreenPreviewCallback(previewCallback) == S_OK;
+	// TODO: Will leak if set callback fails.
 }
 
 - (BOOL)enableVideoInputMode:(BMDDisplayMode)displayMode format:(BMDPixelFormat)pixelFormat flags:(BMDVideoInputFlags)inputFlags
@@ -119,9 +121,10 @@
 - (NSInteger)availableVideoFrameCount
 {
 	int frameCount;
-	if (_deckLinkInput->GetAvailableVideoFrameCount(&frameCount) == S_OK)
-		return frameCount;
-	return -1; // NSNumber and nil maybe?
+	if (_deckLinkInput->GetAvailableVideoFrameCount(&frameCount) != S_OK)
+		return 0;
+
+	return frameCount;
 }
 
 - (BOOL)enableAudioInputSampleRate:(BMDAudioSampleRate)sampleRate type:(BMDAudioSampleType)sampleType count:(NSUInteger)channelCount
@@ -141,33 +144,55 @@
 		return frameCount;
 }
 
+- (NSBMDHardwareReferenceClock*)hardwareReferenceClockScale:(BMDTimeScale)timeScale
+{
+	NSBMDHardwareReferenceClock clock;
+
+	BMDTimeValue hardwareTime;
+	BMDTimeValue timeInFrame;
+	BMDTimeValue ticksPerFrame;
+
+	if (_deckLinkInput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)!= S_OK)
+		return 0;
+
+	clock.hardwareTime = hardwareTime;
+	clock.timeInFrame = timeInFrame;
+	clock.ticksPerFrame = ticksPerFrame;
+
+	return clock;
+
+}
+
+
 // allocator is something I would expect to see in Core Foundation code.
 // setVideoInputFrameMemoryAllocator:(NSIDeckLinkMemoryAllocator*)theAllocator;
 
-- (BMDTimeValue)hardwareTimeReferenceClockScale:(BMDTimeScale)timeScale
-{
-	BMDTimeValue hardwareTime;
-	BMDTimeValue timeInFrame;
-	BMDTimeValue ticksPerFrame;
-	if (_deckLinkInput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)== S_OK)
-		return hardwareTime; // struct anyone?
-}
+// - (BMDTimeValue)hardwareTimeReferenceClockScale:(BMDTimeScale)timeScale
+// {
+// 	BMDTimeValue hardwareTime;
+// 	BMDTimeValue timeInFrame;
+// 	BMDTimeValue ticksPerFrame;
+// 	if (_deckLinkInput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)== S_OK)
+// 		return hardwareTime; // struct anyone?
+// }
+// 
+// - (BMDTimeValue)timeInFrameReferenceClockScale:(BMDTimeScale)timeScale
+// {
+// 	BMDTimeValue hardwareTime;
+// 	BMDTimeValue timeInFrame;
+// 	BMDTimeValue ticksPerFrame;
+// 	if (_deckLinkInput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)== S_OK)
+// 		return timeInFrame; // struct anyone?
+// }
+// 
+// - (BMDTimeValue)timeInFrameReferenceClockScale:(BMDTimeScale)timeScale
+// {
+// 	BMDTimeValue hardwareTime;
+// 	BMDTimeValue timeInFrame;
+// 	BMDTimeValue ticksPerFrame;
+// 	if (_deckLinkInput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)== S_OK)
+// 		return ticksPerFrame; // struct anyone?
+// }
 
-- (BMDTimeValue)timeInFrameReferenceClockScale:(BMDTimeScale)timeScale
-{
-	BMDTimeValue hardwareTime;
-	BMDTimeValue timeInFrame;
-	BMDTimeValue ticksPerFrame;
-	if (_deckLinkInput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)== S_OK)
-		return timeInFrame; // struct anyone?
-}
 
-- (BMDTimeValue)timeInFrameReferenceClockScale:(BMDTimeScale)timeScale
-{
-	BMDTimeValue hardwareTime;
-	BMDTimeValue timeInFrame;
-	BMDTimeValue ticksPerFrame;
-	if (_deckLinkInput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)== S_OK)
-		return ticksPerFrame; // struct anyone?
-}
 @end

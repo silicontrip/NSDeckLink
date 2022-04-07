@@ -22,40 +22,43 @@
 {
 	bool value;
 	HRESULT hr = _profileAttributes->GetFlag(cfgID,&value);
-	if (hr == S_OK)
-		return [NSNumber numberWithBool:value];
-
-	return nil;
+	if (hr != S_OK)
+		return nil;
+	
+	return [NSNumber numberWithBool:value];
 }
 
 - (NSNumber*)intForAttributeID:(BMDDeckLinkAttributeID)cfgID
 {
 	long long value;
 	HRESULT hr = _profileAttributes->GetInt(cfgID,&value);
-	if (hr == S_OK)
-		return [NSNumber numberWithLongLong:value];
+	if (hr != S_OK)
+		return nil;
 
-	return nil;
+	return [NSNumber numberWithLongLong:value];
+
 }
 
 - (NSNumber*)floatForAttributeID:(BMDDeckLinkAttributeID)cfgID
 {
 	double value;
 	HRESULT hr = _profileAttributes->GetFloat(cfgID,&value);
-	if (hr == S_OK)
-		return [NSNumber numberWithDouble:value];
+	if (hr != S_OK)
+		return nil;
 
-	return nil;
+	return [NSNumber numberWithDouble:value];
+
 }
 
 - (NSString*)stringForAttributeID:(BMDDeckLinkAttributeID)cfgID
 {
 	CFStringRef stringvalue;
 	HRESULT hr = _profileAttributes->GetString(cfgID,&stringvalue);
-	if (hr == S_OK)
-		return (NSString*)stringvalue;
+	if (hr != S_OK)
+		return nil;
 
-	return nil;
+	return (NSString*)stringvalue;
+
 }
 
 @end

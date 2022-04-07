@@ -20,10 +20,11 @@
 {
 	IDeckLink* lp = NULL;
 
-	if (_displayModeIterator->Next(&lp) == S_OK)
-		return (NSIDeckLinkDisplayModeIterator*)[NSIDeckLinkDisplayModeIterator displayModeIteratorWithIDisplayModeIterator:lp];
+	if (_displayModeIterator->Next(&lp) != S_OK)
+		return nil;
 
-	return nil;
+	return (NSIDeckLinkDisplayModeIterator*)[NSIDeckLinkDisplayModeIterator displayModeIteratorWithIDisplayModeIterator:lp];
+
 }
 
 - (NSArray<NSIDeckLinkDisplayModeIterator*>*)allObjects 

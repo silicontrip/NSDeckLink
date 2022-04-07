@@ -21,65 +21,65 @@
 {
 	bool value;
 	HRESULT hr = _configuration->GetFlag(cfgID,&value);
-	if (hr == S_OK)
-		return [NSNumber numberWithBool:value];
+	if (hr != S_OK)
+		return nil;
 
-	return nil;
+	return [NSNumber numberWithBool:value];
+
 }
 
 - (NSNumber*)intForAttributeID:(BMDDeckLinkAttributeID)cfgID
 {
 	long long value;
 	HRESULT hr = _configuration->GetInt(cfgID,&value);
-	if (hr == S_OK)
-		return [NSNumber numberWithLongLong:value];
+	if (hr != S_OK)
+		return nil;
 
-	return nil;
+	return [NSNumber numberWithLongLong:value];
+
 }
 
 - (NSNumber*)floatForAttributeID:(BMDDeckLinkAttributeID)cfgID
 {
 	double value;
 	HRESULT hr = _configuration->GetFloat(cfgID,&value);
-	if (hr == S_OK)
-		return [NSNumber numberWithDouble:value];
+	if (hr != S_OK)
+		return nil;
 
-	return nil;
+	return [NSNumber numberWithDouble:value];
+
 }
 
 - (NSString*)stringForAttributeID:(BMDDeckLinkAttributeID)cfgID
 {
 	CFStringRef stringvalue;
 	HRESULT hr = _configuration->GetString(cfgID,&stringvalue);
-	if (hr == S_OK)
-		return (NSString*)stringvalue;
+	if (hr != S_OK)
+		return nil;
 
-	return nil;
+	return (NSString*)stringvalue;
+
 }
 
 - (void)setFlag:(NSNumber*)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID
 {
-	HRESULT hr = _configuration->SetFlag(cfgID, [value boolValue]);
-	if (hr != S_OK)
+	if (_configuration->SetFlag(cfgID, [value boolValue]) != S_OK)
 		NSLog(@"Error setting flag for attribute %d", cfgID);
 }
 
 - (void)setInt:(NSNumber*)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID
 {
-	HRESULT hr = _configuration->SetInt(cfgID, [value longLongValue]);
-	if (hr != S_OK)
+	if (_configuration->SetInt(cfgID, [value longLongValue]) != S_OK)
 		NSLog(@"Error setting int for attribute %d", cfgID);
 }
 - (void)setFloat:(NSNumber*)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID
 {
-	HRESULT hr = _configuration->SetFloat(cfgID, [value doubleValue]);
-	if (hr != S_OK)
+	if (_configuration->SetFloat(cfgID, [value doubleValue]) != S_OK)
 		NSLog(@"Error setting float for attribute %d", cfgID);
 }
 - (void)setString:(NSString*)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID
 {
-	HRESULT hr = _configuration->SetString(cfgID, (CFStringRef)value);
-	if (hr != S_OK)
+	if (_configuration->SetString(cfgID, (CFStringRef)value) != S_OK)
 		NSLog(@"Error setting string for attribute %d", cfgID);
 }
 

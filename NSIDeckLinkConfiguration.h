@@ -2,7 +2,10 @@
 #import "NSIUnknown.h"
 #import "DeckLinkAPI.h"
 
-@interface NSIDeckLinkConfiguration : NSIUnknown {}
+@interface NSIDeckLinkConfiguration : NSIUnknown 
+{
+	
+}
 
 - (NSNumber*)flagForAttributeID:(BMDDeckLinkConfigurationID)cfgID;
 - (NSNumber*)intForAttributeID:(BMDDeckLinkConfigurationID)cfgID;

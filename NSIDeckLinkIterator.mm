@@ -7,10 +7,11 @@
 	IDeckLink* lp = NULL;
 	//IDeckLink* deckLink = nil;
 
-	if (_iDeckLinkIterator->Next(&lp) == S_OK)
-		return (NSIDeckLink*)[NSIDeckLink deckLinkWithIDeckLink:lp];
+	if (_iDeckLinkIterator->Next(&lp) != S_OK)
+		return nil;
 
-	return nil;
+	return (NSIDeckLink*)[NSIDeckLink deckLinkWithIDeckLink:lp];
+
 }
 
 + (NSIDeckLinkIterator *)iterator
