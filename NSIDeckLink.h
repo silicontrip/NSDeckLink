@@ -1,5 +1,3 @@
-#import <CoreFoundation/CFPlugInCOM.h>
-#import <CoreFoundation/CFUUID.h>
 #import <Foundation/Foundation.h>
 #import "NSIUnknown.h"
 #import "DeckLinkAPI.h"

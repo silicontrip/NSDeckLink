@@ -5,66 +5,6 @@
 @synthesize displayName;
 @synthesize modelName;
 
-/*
-+ (NSIDeckLink*)deckLinkWithDisplayName:(NSString*)displayname
-{
-	return [[[NSIDeckLink alloc] initWithDisplayName:displayname] autorelease];
-}
-
-+ (NSIDeckLink*)deckLinkWithModelName:(NSString*)modelname
-{
-	return [[[NSIDeckLink alloc] initWithModelName:modelname] autorelease];
-}
-
-// there may be more than one matching
-- (instancetype)initWithDisplayName:(NSString*)displayname
-{
-	if (self = [super init]) {
-		IDeckLinkIterator* deckLinkIterator = CreateDeckLinkIteratorInstance();
-		if (deckLinkIterator)
-		{
-			IDeckLink* deckLink = nil;
-			while (deckLinkIterator->Next(&deckLink) == S_OK)
-			{
-				CFStringRef display=nil;
-				HRESULT res = deckLink->GetDisplayName(&display);
-				if (res == S_OK) {
-					if ([displayname isEqualTo:(NSString*)display]) // what if more than one
-					{
-						deckLinkIterator->Release();
-						return [[[NSIDeckLink alloc] initWithIDeckLink:deckLink] autorelease];
-					}
-				}
-			}
-			deckLinkIterator->Release();
-		}
-	}
-	return nil;
-}
-
-- (instancetype)initWithModelName:(NSString*)modelname
-{
-	IDeckLinkIterator* deckLinkIterator = CreateDeckLinkIteratorInstance();
-	if (deckLinkIterator)
-	{
-		IDeckLink* deckLink = nil;
-		while (deckLinkIterator->Next(&deckLink) == S_OK)
-		{
-			CFStringRef model=nil;
-			HRESULT res = deckLink->GetDisplayName(&model);
-			if (res == S_OK) {
-				if ([modelname isEqualTo:(NSString*)model])
-				{
-					deckLinkIterator->Release();
-					return [self initWithIDeckLink:deckLink]; 
-				}
-			}
-		}
-		deckLinkIterator->Release();
-	}
-	return nil;
-}
-*/
 // CPP
 + (NSIDeckLink*)deckLinkWithIDeckLink:(IDeckLink*)decklink 
 {
@@ -123,16 +63,14 @@
 	//return (NSIDeckLinkConfiguration*)
 	// [self queryInterface:IID_IDeckLinkConfiguration];
 	LPVOID lp;
-	HRESULT hr = _iDeckLink->QueryInterface(IID_IDeckLinkConfiguration,&lp);  
-
-	if (hr != S_OK)
-		return nil;
-
+	if (_iDeckLink->QueryInterface(IID_IDeckLinkConfiguration,&lp) != S_OK)
+		return nil;  
+		
+	// what is the retain count at this point. appears to be 2
 	IDeckLinkConfiguration* idc = (IDeckLinkConfiguration*)lp;
 	idc->Release(); // retain = 1
 
 	//NSLog(@"release reference: %u",idc->Release());
-	// what is the retain count at this point.
 
 	return [NSIDeckLinkConfiguration configurationWithIDeckLinkConfiguration:idc];
 }
@@ -141,10 +79,8 @@
 {
 
 	LPVOID lp;
-	HRESULT hr = _iDeckLink->QueryInterface(IID_IDeckLinkInput,&lp);  
-
-	if (hr != S_OK)
-		return nil;
+	if(_iDeckLink->QueryInterface(IID_IDeckLinkInput,&lp) != S_OK)
+		return nil;  
 
 	IDeckLinkInput* idi = (IDeckLinkInput*)lp;
 	idi->Release();
