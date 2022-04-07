@@ -10,11 +10,11 @@ class IDeckLinkInputCallbackNS : public IDeckLinkInputCallback
 	~IDeckLinkInputCallback () {
 		[_nsinputcallback release];
 	} // call Release method to drop reference count
-	NSIDeckLinkInputCallback* _nsinputcallback;
+	id<NSIDeckLinkInputCallback> _nsinputcallback;
 
 public:
 
-	IDeckLinkInputCallback(NSIDeckLinkInputCallback* nsinputcallback) {
+	IDeckLinkInputCallback(id<NSIDeckLinkInputCallback> nsinputcallback) {
 		_nsinputcallback = nsinputcallback;
 		[_nsinputcallback retain];
 	}
