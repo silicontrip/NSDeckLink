@@ -4,7 +4,7 @@
 typedef struct {
 	BMDTimeValue timeValue;
 	BMDTimeScale timeScale;
-} NSFrameRate;
+} NSBMDFrameRate;
 
 @interface NSIDeckLinkDisplayMode : NSIUnknown
 {
@@ -15,7 +15,7 @@ typedef struct {
 - (NSNumber*)height;
 - (NSString*)name;
 - (BMDDisplayMode)displayMode;
-- (NSFrameRate)frameRate;
+- (NSBMDFrameRate)frameRate;
 - (BMDFieldDominance)fieldDominance;
 - (BMDDisplayModeFlags)flags;
 
