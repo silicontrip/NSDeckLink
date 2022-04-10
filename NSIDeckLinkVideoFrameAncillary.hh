@@ -1,12 +1,13 @@
+
 #import "NSIDeckLinkVideoFrameAncillary.h"
+#import "NSIUnknown.hh"
 
 @interface NSIDeckLinkVideoFrameAncillary ()
 {
 	IDeckLinkVideoFrameAncillary* _ancillary;
 }
 
-
-+ (NSIDeckLinkVideoFrameAncillary *)videoFrameAncillaryWithIDeckLinkVideFrameAncillary:(IDeckLinkVideoFrameAncillary *)iDeckLinkVideFrameAncillary;
-- (instancetype)initWithIDeckLinkVideFrameAncillary:(IDeckLinkVideoFrameAncillary *)iDeckLinkVideFrameAncillary;
++ (NSIDeckLinkVideoFrameAncillary *)videoFrameAncillaryWithIDeckLinkVideoFrameAncillary:(IDeckLinkVideoFrameAncillary *)iDeckLinkVideFrameAncillary;
+- (instancetype)initWithIDeckLinkVideoFrameAncillary:(IDeckLinkVideoFrameAncillary *)iDeckLinkVideFrameAncillary;
 
 @end

@@ -20,7 +20,7 @@
 - (BMDTimeValue)packetTimeWithScale:(BMDTimeScale)scale
 {
 	BMDTimeValue value;
-	if (GetPacketTime (&value, scale) != S_OK)
+	if (_audioinputpacket->GetPacketTime (&value, scale) != S_OK)
 		return 0;
 	 
 	return value;

@@ -1,4 +1,3 @@
-
 #import "NSIUnknown.h"
 #import "DeckLinkAPI.h"
 
@@ -11,8 +10,7 @@ typedef struct {
 
 @interface NSIDeckLinkTimecode : NSIUnknown
 {
-	@private
-	IDeckLinkTimecode* _timecode;
+
 }
 
 - (BMDTimecodeBCD)bcdTimecode;

@@ -1,4 +1,5 @@
 #import "NSIDeckLinkTimecode.h"
+#import "NSIUnknown.hh"
 
 @interface NSIDeckLinkTimecode ()
 

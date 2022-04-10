@@ -10,12 +10,6 @@
 @property (nonatomic, strong) NSString* displayName;
 @property (nonatomic, strong) NSString* modelName;
 
-//+ (instancetype)deckLinkWithDisplayName:(NSString*)displayname;
-//+ (instancetype)deckLinkWithModelName:(NSString*)modelname;
-
-//- (instancetype)initWithDisplayName:(NSString*)displayname;
-//- (instancetype)initWithModelName:(NSString*)modelname;
-
 //- (NSIDeckLinkOutput*)output;
 - (NSIDeckLinkInput*)input;
 - (NSIDeckLinkConfiguration*)configuration;

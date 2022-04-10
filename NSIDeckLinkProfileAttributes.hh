@@ -1,4 +1,5 @@
 #import "NSIDeckLinkProfileAttributes.h"
+#import "NSIUnknown.hh"
 
 @interface NSIDeckLinkProfileAttributes () 
 {

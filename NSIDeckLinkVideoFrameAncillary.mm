@@ -27,7 +27,7 @@
 - (NSData*)dataForVerticalBlankingLine:(NSInteger)lineNumber
 {
 	void* data;
-	if (_ancillary->GetBufferForVerticalBlankingLine(&data, lineNumber) != S_OK)
+	if (_ancillary->GetBufferForVerticalBlankingLine(lineNumber,&data) != S_OK)
 		return nil;
 	
 	//NSInteger dlen = _ancillary->GetBufferForVerticalBlankingLine(NULL, lineNumber);

@@ -2,12 +2,12 @@
 
 @implementation NSIDeckLinkDisplayMode
 
-+ (NSIDeckLinkDisplayMode*)displayModeWithDisplayMode:(IDeckLinkDisplayMode*)dm 
++ (NSIDeckLinkDisplayMode*)displayModeWithIDeckLinkDisplayMode:(IDeckLinkDisplayMode*)dm 
 {
-	return [[[NSIDeckLinkDisplayMode alloc] initWithDisplayMode:dm] autorelease];
+	return [[[NSIDeckLinkDisplayMode alloc] initWithIDeckLinkDisplayMode:dm] autorelease];
 }
 
-- (instancetype)initWithIDeckLinkDisplayMode:(IDeckLinkDisplayMode)dm
+- (instancetype)initWithIDeckLinkDisplayMode:(IDeckLinkDisplayMode*)dm
 {
 	if ((self = [super initWithIUnknown:dm refiid:IID_IDeckLinkDisplayMode]))
 	{
@@ -28,7 +28,7 @@
 - (NSString*)name
 {
 	CFStringRef name;
-	if (_displaymode->GetName(*name) != S_OK)
+	if (_displaymode->GetName(&name) != S_OK)
 		return nil;
 
 	return (NSString*)name;
@@ -41,15 +41,16 @@
 }
 - (NSBMDFrameRate)frameRate
 {
-	NSBMDFrameRate frameRate;
 	BMDTimeValue timeValue;
 	BMDTimeScale timeScale;
 
 	if (_displaymode->GetFrameRate(&timeValue,&timeScale) != S_OK)
-		return 0;
+	{
+		NSBMDFrameRate frameRate = {0,0};
+		return frameRate;
+	}
 
-	frameRate.timeScale = timeScale;
-	frameRate.timeValue = timeValue;
+	NSBMDFrameRate frameRate = {timeValue, timeScale};
 
 	return frameRate;
 }

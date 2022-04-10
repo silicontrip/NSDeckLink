@@ -1,4 +1,4 @@
-#import "NSIDeckLinkTimecode.h"
+#import "NSIDeckLinkTimecode.hh"
 
 @implementation NSIDeckLinkTimecode
 
@@ -19,26 +19,24 @@
 
 - (BMDTimecodeBCD)bcdTimecode
 {
-	return _timecode->GetBCDTimecode();
+	return _timecode->GetBCD();
 }
 
 - (NSBMDTimecodeComponents)componentTimecode
 {
-	NSBMDTimecodeComponents components;
 	
 	uint8_t h;
 	uint8_t m;
 	uint8_t s;
 	uint8_t f;
-	
 
 	if (_timecode->GetComponents(&h,&m,&s,&f) != S_OK)
-		return 0;
+	{
+		NSBMDTimecodeComponents components = { h, m, s, f};
+		return components;
+	}
 	
-	components.hours = h;
-	components.minutes = m;
-	components.seconds = s;
-	components.frames = f;
+	NSBMDTimecodeComponents components = { h, m, s, f};
 
 	return components;
 }
@@ -52,7 +50,7 @@
 {
 	BMDTimecodeUserBits userBits;
 
-	if ( _timecode->GetUserBits(&userBits) != S_OK )
+	if ( _timecode->GetTimecodeUserBits(&userBits) != S_OK )
 		return 0;
 
 	return userBits;

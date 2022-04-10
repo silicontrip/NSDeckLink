@@ -1,8 +1,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreFoundation/CoreFoundation.h>
 #import <CoreFoundation/CFPlugInCOM.h>
-#import <CoreFoundation/CFUUID.h>
+//#import <CoreFoundation/CFUUID.h>
 #import "NSIUnknown.h"
+
+static const REFIID IID_IUnknown = CFUUIDGetUUIDBytes(IUnknownUUID);
+bool operator==(const REFIID& lhs, const REFIID& rhs);
 
 @interface NSIUnknown ()
 {
@@ -15,8 +18,7 @@
 	ULONG _refCount;
 }
 
-- (id)initWithIUnknown:(IUnknown*)iunknown refiid:(REFIID)ref;
+- (instancetype)initWithIUnknown:(IUnknown*)iunknown refiid:(REFIID)ref;
 + (NSIUnknown *)iunknownWithIUnknown:(IUnknown *)iunknown refiid:(REFIID)ref;
-
 
 @end

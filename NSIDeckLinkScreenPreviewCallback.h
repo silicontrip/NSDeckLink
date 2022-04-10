@@ -1,7 +1,7 @@
 #import "DeckLinkAPI.h"
 #import "NSIDeckLinkVideoFrame.h"
 
-@protocol NSIDeckLinkScreenPreviewCallback
+@protocol NSIDeckLinkScreenPreviewCallback <NSObject>
 
 - (BOOL)drawFrame:(NSIDeckLinkVideoFrame*)videoFrame;
 

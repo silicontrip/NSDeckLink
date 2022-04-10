@@ -1,4 +1,7 @@
 #import "NSIDeckLinkVideoFrame.h"
+#import "NSIDeckLinkTimecode.hh"
+#import "NSIDeckLinkVideoFrameAncillary.hh"
+#import "NSIUnknown.hh"
 
 @interface NSIDeckLinkVideoFrame ()
 {
@@ -7,6 +10,6 @@
 }
 
 + (NSIDeckLinkVideoFrame*)videoFrameWithIDeckLinkVideoFrame:(IDeckLinkVideoFrame*)videoframe;
-- (instancetype)initWithVideoFrame:(IDeckLinkVideoFrame*)videoframe;
+- (instancetype)initWithIDeckLinkVideoFrame:(IDeckLinkVideoFrame*)videoframe;
 
 @end

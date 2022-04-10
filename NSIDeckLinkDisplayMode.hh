@@ -1,4 +1,6 @@
 #import "NSIDeckLinkDisplayMode.h"
+#import "NSIUnknown.hh"
+#import "DeckLinkAPI.h"
 
 @interface NSIDeckLinkDisplayMode ()
 {

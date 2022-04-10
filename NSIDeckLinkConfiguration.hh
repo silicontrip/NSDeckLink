@@ -1,4 +1,6 @@
 #import "NSIDeckLinkConfiguration.h"
+#import "NSIUnknown.hh"
+
 
 @interface NSIDeckLinkConfiguration () 
 {

@@ -1,6 +1,7 @@
+#import <Foundation/Foundation.h>
 #import <CoreFoundation/CoreFoundation.h>
 #import <CoreFoundation/CFPlugInCOM.h>
-#import <CoreFoundation/CFUUID.h>
+//#import <CoreFoundation/CFUUID.h>
 
 
 // typedef struct __CF

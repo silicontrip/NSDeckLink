@@ -4,6 +4,8 @@
 #import "NSIDeckLinkDisplayMode.h"
 #import "NSIDeckLinkScreenPreviewCallback.h"
 
+#import "DeckLinkAPI.h"
+
 typedef struct {
 	BMDTimeValue hardwareTime;
 	BMDTimeValue timeInFrame;
@@ -15,10 +17,12 @@ typedef struct {
 }
 
 - (NSIDeckLinkDisplayModeIterator*)displayModeIterator;
-- (void)setCallback:(id<NSIDeckLinkInputCallback>)callback;
+- (BOOL)setCallback:(id<NSIDeckLinkInputCallback>)callback;
 - (NSIDeckLinkDisplayMode*)displayMode:(BMDDisplayMode)displayMode;
-- (BOOL)supportsVideoConnection:(BMDVideoConnection)connection mode:(BMDDisplayMode)requestedMode pixelFormat:(BMDPixelFormat)requestedPixelFormat conversion:(BMDVideoInputConversionMode)conversion  flags:(BMDSupportedVideoModeFlags)flags;
-- (void)setScreenPreviewCallback:(id<NSIDeckLinkScreenPreviewCallback>)previewCallback;
+- (BOOL)supportsVideoModeConnection:(BMDVideoConnection)connection mode:(BMDDisplayMode)mode pixelFormat:(BMDPixelFormat)pixelFormat flags:(BMDSupportedVideoModeFlags)flags;
+
+//- (BOOL)supportsVideoConnection:(BMDVideoConnection)connection mode:(BMDDisplayMode)requestedMode pixelFormat:(BMDPixelFormat)requestedPixelFormat conversion:(BMDVideoInputConversionMode)conversion  flags:(BMDSupportedVideoModeFlags)flags;
+- (BOOL)setScreenPreviewCallback:(id<NSIDeckLinkScreenPreviewCallback>)previewCallback;
 - (BOOL)enableVideoInputMode:(BMDDisplayMode)displayMode format:(BMDPixelFormat)pixelFormat flags:(BMDVideoInputFlags)inputFlags;
 - (BOOL)disableVideoInput;
 - (NSUInteger)availableVideoFrameCount;
@@ -42,7 +46,7 @@ timeInFrame:(BMDTimeValue*)timeInFrame
 ticksPerFrame:(BMDTimeValue*)ticks;
 */
 
-- (NSBMDHardwareReferenceClock*)hardwareReferenceClockScale:(BMDTimeScale)timeScale;
+- (NSBMDHardwareReferenceClock)hardwareReferenceClockScale:(BMDTimeScale)timeScale;
 
 // - (BMDTimeValue)hardwareTimeReferenceClockScale:(BMDTimeValue*)timeScale;
 // - (BMDTimeValue)timeInFrameReferenceClockScale:(BMDTimeValue*)timeScale;

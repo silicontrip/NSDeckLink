@@ -16,7 +16,7 @@
 	return self;
 }
 
-- (NSUInteger)rowBytes
+- (NSInteger)rowBytes
 {
 	return _videoframe->GetRowBytes();
 }
@@ -67,7 +67,7 @@
 	if (_videoframe->GetAncillaryData(&ancillary) != S_OK)
 		return nil;
 	
-	return [NSIDeckLinkVideoFrameAncillary ancillaryDataWithIDeckLinkVideoFrameAncillary:ancillary];
+	return [NSIDeckLinkVideoFrameAncillary videoFrameAncillaryWithIDeckLinkVideoFrameAncillary:ancillary];
 }
 
 @end

@@ -1,5 +1,7 @@
 #include "DeckLinkAPI.h"
 #import <Foundation/Foundation.h>
+#import "NSIUnknown.h"
+
 
 typedef struct {
 	BMDTimeValue timeValue;

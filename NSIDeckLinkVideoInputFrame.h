@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "DeckLinkAPI.h"
+#import "NSIUnknown.h"
+
 
 typedef struct {
 	BMDTimeValue frameTime;
@@ -11,7 +13,7 @@ typedef struct {
 
 }
 
-- (NSBMDStreamTime*)streamTime:(BMDTimeScale)timeScale;
-- (NSBMDStreamTime*)hardwareReferenceTimestamp:(BMDTimeScale)timeScale;
+- (NSBMDStreamTime)streamTime:(BMDTimeScale)timeScale;
+- (NSBMDStreamTime)hardwareReferenceTimestamp:(BMDTimeScale)timeScale;
 
 @end

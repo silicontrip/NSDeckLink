@@ -3,11 +3,11 @@
 
 @implementation NSIDeckLinkDisplayModeIterator
 
-+ (NSIDeckLinkDisplayModeIterator*)displayModeIteratorWithIDisplayModeIterator:(IDeckLinkDisplayModeIterator*)displayModeIterator
++ (NSIDeckLinkDisplayModeIterator*)displayModeIteratorWithIDeckLinkDisplayModeIterator:(IDeckLinkDisplayModeIterator*)displayModeIterator
 {
-	return [[[NSIDeckLinkDisplayModeIterator alloc] initWithIDisplayModeIterator:displayModeIterator] autorelease];
+	return [[[NSIDeckLinkDisplayModeIterator alloc] initWithIDeckLinkDisplayModeIterator:displayModeIterator] autorelease];
 }
-- (instancetype)initWithIDisplayModeIterator:(IDeckLinkDisplayModeIterator*)displayModeIterator
+- (instancetype)initWithIDeckLinkDisplayModeIterator:(IDeckLinkDisplayModeIterator*)displayModeIterator
 {
 	if (self = [super initWithIUnknown:displayModeIterator refiid:IID_IDeckLinkDisplayModeIterator])
 	{
@@ -16,22 +16,23 @@
 	return self;
 }
 
--(NSIDeckLinkDisplayModeIterator*)nextObject
+-(NSIDeckLinkDisplayMode*)nextObject
 {
-	IDeckLink* lp = NULL;
+	IDeckLinkDisplayMode* lp = NULL;
 
 	if (_displayModeIterator->Next(&lp) != S_OK)
 		return nil;
 
-	return (NSIDeckLinkDisplayModeIterator*)[NSIDeckLinkDisplayModeIterator displayModeIteratorWithIDisplayModeIterator:lp];
+														    
+	return [NSIDeckLinkDisplayMode displayModeWithIDeckLinkDisplayMode:lp];
 
 }
 
-- (NSArray<NSIDeckLinkDisplayModeIterator*>*)allObjects 
+- (NSArray<NSIDeckLinkDisplayMode*>*)allObjects 
 {
 	NSMutableArray* devices = [[[NSMutableArray alloc] init] autorelease];
 
-	NSIDeckLinkDisplayModeIterator* deckLink = nil;
+	NSIDeckLinkDisplayMode* deckLink = nil;
 	while ((deckLink = [self nextObject]))
 	{
 		if (deckLink) {
@@ -46,14 +47,14 @@
 	if(state->state == 0)
 	{
 		state->mutationsPtr = (unsigned long *)&_iunknown;
-		state->extra[0] = (long)_iDeckLinkIterator;
+		state->extra[0] = (long)_displayModeIterator;
 		state->state = 1;
 	}
 
 	IDeckLinkDisplayMode* lp = NULL;
 	IDeckLinkDisplayModeIterator *iter = (IDeckLinkDisplayModeIterator *)state->extra[0];
 
-	if (ter->Next(&lp) != S_OK)
+	if (iter->Next(&lp) != S_OK)
 		return 0;	
 
 	NSIDeckLinkDisplayMode* dl = [NSIDeckLinkDisplayMode displayModeWithIDeckLinkDisplayMode:lp];  

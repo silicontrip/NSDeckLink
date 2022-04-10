@@ -6,28 +6,36 @@
 }
 
 // I dont think we can init this class as it's internal class is made by a call to the decklink object
-+ (NSIDeckLinkInput *)inputWithIDeckLinkInput:(IDeckLinkInput*)input
+
+
++ (NSIDeckLinkInput *)inputWithIDeckLinkInput:(IDeckLinkInput*)deckLinkInput
 {
-	return [[[NSIDeckLinkInput alloc] initWithIDeckLinkInput:input] autorelease];
+	return [[[NSIDeckLinkInput alloc] initWithIDeckLinkInput:deckLinkInput] autorelease];
 }
 
 - (instancetype)initWithIDeckLinkInput:(IDeckLinkInput*)input
 {
     if (self = [super initWithIUnknown:input refiid:IID_IDeckLinkInput])
 	{
-		_deckLinkinput = input;
+		_decklinkinput = input;
 	}
 	return self;
 }
 
 // want to come up with a better way to report failures
 
-- (BOOL)supportsVideoModeConnection:(BMDVideoConnection)connection mode:(BMDDisplayMode)mode pixelFormat:(BMDPixelFormat)pixelFormat conversion:(BMDVideoOutputConversionMode)conversion flags:(BMDSupportedVideoModeFlags)flags
+- (BOOL)supportsVideoModeConnection:(BMDVideoConnection)connection mode:(BMDDisplayMode)mode pixelFormat:(BMDPixelFormat)pixelFormat flags:(BMDSupportedVideoModeFlags)flags
 {
 	//BMDDisplayMode actualMode = NULL;
-	BOOL supported = NO;
-	
-	if (_deckLinkInput->DoesSupportVideoMode(connection, mode, pixelFormat, conversion, flags, &supported) != S_OK)
+	bool supported = NO;
+	BMDDisplayMode actualMode;
+//    virtual HRESULT DoesSupportVideoMode (/* in */ BMDVideoConnection connection /* If a value of 0 is specified, the caller does not care about the connection */, 
+// /* in */ BMDDisplayMode requestedMode, 
+// /* in */ BMDPixelFormat requestedPixelFormat, 
+// /* in */ BMDSupportedVideoModeFlags flags, /* out */ bool* supported) = 0;
+
+
+	if (_decklinkinput->DoesSupportVideoMode(connection, mode, pixelFormat,  flags,  &supported) != S_OK)
 		return NO;
 	
 	return supported;
@@ -37,7 +45,7 @@
 {
 	IDeckLinkDisplayModeIterator* iterator = NULL;
 	
-	if (_deckLinkInput->GetDisplayModeIterator(&iterator) != S_OK)
+	if (_decklinkinput->GetDisplayModeIterator(&iterator) != S_OK)
 		return nil;
 	
 	return [NSIDeckLinkDisplayModeIterator displayModeIteratorWithIDeckLinkDisplayModeIterator:iterator];
@@ -47,56 +55,59 @@
 {
 	IDeckLinkDisplayMode* deckLinkDisplayMode = NULL;
 	
-	if (_deckLinkInput->GetDisplayMode(displayMode, &deckLinkDisplayMode) != S_OK)
+	if (_decklinkinput->GetDisplayMode(displayMode, &deckLinkDisplayMode) != S_OK)
 		return nil;
 	
 	return [NSIDeckLinkDisplayMode displayModeWithIDeckLinkDisplayMode:deckLinkDisplayMode];
 }
 
-- (void)setCallback:(NSIDeckLinkInputCallback*)callback
+- (BOOL)setCallback:(id<NSIDeckLinkInputCallback>)callback
 {
 
-// encapsulate the NSIDeckLinkInputCallback in the C++ IDeckLinkInputCallback subclass
-	IDeckLinkInputCallbackNS* cb = new IDeckLinkInputCallbackNS(callback);
+	// IUnknown* iunknown = NULL;
+	// CFTtypeRef lp;
+	// NSError* error = nil;
+	//HRESULT result = _iunknown->QueryInterface(iid, (void**)&iunknown);
 
-	if (_deckLinkInput->SetCallback(cb) != S_OK)
-		return;
+	// encapsulate the NSIDeckLinkInputCallback in the C++ IDeckLinkInputCallback subclass
+
+	IDeckLinkInputCallbackNS* cb = 	new IDeckLinkInputCallbackNS(callback);
+
+	// _decklinkinput->QueryInterface(IID_IDeckLinkInputCallback);
+	
+	return _decklinkinput->SetCallback(cb) == S_OK;
 }
 
 - (BOOL)startStreams
 {
-	return _deckLinkInput->StartStreams() == S_OK;
+	return _decklinkinput->StartStreams() == S_OK;
 }
 
 - (BOOL)stopStreams
 {
-	return _deckLinkInput->StopStreams == S_OK;
+	return _decklinkinput->StopStreams() == S_OK;
 }
 
 - (BOOL)flushStreams
 {
-	return _deckLinkInput->FlushStreams() == S_OK;
+	return _decklinkinput->FlushStreams() == S_OK;
 }
 
 - (BOOL)pauseStreams
 {
-	return _deckLinkInput->PauseStreams() == S_OK;
+	return _decklinkinput->PauseStreams() == S_OK;
 }
 
-
-- (BOOL)enableAudioInput:(BOOL)enable
+//EnableAudioInput (BMDAudioSampleRate sampleRate, BMDAudioSampleType sampleType, uint32_t channelCount);
+- (BOOL)enableAudioInput:(BMDAudioSampleRate)rate sampleType:(BMDAudioSampleType)type channelCount:(uint32_t)count
 {
-	return _deckLinkInput->EnableAudioInput(enable) == S_OK;
+	return _decklinkinput->EnableAudioInput(rate, type, count) == S_OK;
 }
 
-- (BOOL)enableVideoInputMode:(BMDDisplayMode)displayMode format:(BMDPixelFormat)pixelFormat flags:(BMDVideoInputFlags)inputFlags
+// EnableVideoInput (BMDDisplayMode displayMode, BMDPixelFormat pixelFormat, BMDVideoInputFlags flags);
+- (BOOL)enableVideoInput:(BMDDisplayMode)mode format:(BMDPixelFormat)format flags:(BMDVideoInputFlags)flags
 {
-	return (_deckLinkInput->enableVideoInput(displayMode,pixelFormat,inputFlags));
-}
-
-- (BOOL)enableVideoInput:(BOOL)enable
-{
-	return _deckLinkInput->EnableVideoInput(enable) == S_OK;
+	return _decklinkinput->EnableVideoInput(mode, format, flags) == S_OK;
 }
 
 - (BOOL)setScreenPreviewCallback:(id<NSIDeckLinkScreenPreviewCallback>)previewCallback
@@ -104,24 +115,24 @@
 	// encapsulate the NSIDeckLinkInputCallback in the C++ IDeckLinkInputCallback subclass
 
 	IDeckLinkScreenPreviewCallbackNS* screenPreview = new IDeckLinkScreenPreviewCallbackNS(previewCallback);
-	return _deckLinkInput->SetScreenPreviewCallback(previewCallback) == S_OK;
+	return _decklinkinput->SetScreenPreviewCallback(screenPreview) == S_OK;
 	// TODO: Will leak if set callback fails.
 }
 
 - (BOOL)enableVideoInputMode:(BMDDisplayMode)displayMode format:(BMDPixelFormat)pixelFormat flags:(BMDVideoInputFlags)inputFlags
 {
-	return _deckLinkInput->EnableVideoInputMode(displayMode, pixelFormat, inputFlags) == S_OK;
+	return _decklinkinput->EnableVideoInput(displayMode, pixelFormat, inputFlags) == S_OK;
 }
 
 - (BOOL)disableVideoInput
 {
-	return _deckLinkInput->DisableVideoInput() == S_OK;
+	return _decklinkinput->DisableVideoInput() == S_OK;
 }
 
-- (NSInteger)availableVideoFrameCount
+- (NSUInteger)availableVideoFrameCount
 {
-	int frameCount;
-	if (_deckLinkInput->GetAvailableVideoFrameCount(&frameCount) != S_OK)
+	uint32_t frameCount;
+	if (_decklinkinput->GetAvailableVideoFrameCount(&frameCount) != S_OK)
 		return 0;
 
 	return frameCount;
@@ -129,38 +140,38 @@
 
 - (BOOL)enableAudioInputSampleRate:(BMDAudioSampleRate)sampleRate type:(BMDAudioSampleType)sampleType count:(NSUInteger)channelCount
 {
-	return _deckLinkInput->EnableAudioInput(sampleRate, sampleType, channelCount) == S_OK;
+	return _decklinkinput->EnableAudioInput(sampleRate, sampleType, channelCount) == S_OK;
 }
 
 - (BOOL)disableAudioInput
 {
-	return _deckLinkInput->DisableAudioInput() == S_OK;
+	return _decklinkinput->DisableAudioInput() == S_OK;
 }
 
-- (NSInteger)availableAudioSampleFrameCount
+- (NSUInteger)availableAudioSampleFrameCount
 {
-	int frameCount;
-	if (_deckLinkInput->GetAvailableAudioSampleFrameCount(&frameCount))
+	uint32_t frameCount;
+	if (_decklinkinput->GetAvailableAudioSampleFrameCount(&frameCount))
 		return frameCount;
+
+	return 0;
 }
 
-- (NSBMDHardwareReferenceClock*)hardwareReferenceClockScale:(BMDTimeScale)timeScale
+- (NSBMDHardwareReferenceClock)hardwareReferenceClockScale:(BMDTimeScale)timeScale
 {
-	NSBMDHardwareReferenceClock clock;
+	//NSBMDHardwareReferenceClock clock;
 
 	BMDTimeValue hardwareTime;
 	BMDTimeValue timeInFrame;
 	BMDTimeValue ticksPerFrame;
 
-	if (_deckLinkInput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)!= S_OK)
-		return 0;
-
-	clock.hardwareTime = hardwareTime;
-	clock.timeInFrame = timeInFrame;
-	clock.ticksPerFrame = ticksPerFrame;
-
+	if (_decklinkinput->GetHardwareReferenceClock(timeScale, &hardwareTime, &timeInFrame, &ticksPerFrame)!= S_OK)
+	{
+		NSBMDHardwareReferenceClock clock = {0,0,0};
+		return clock;
+	}
+	NSBMDHardwareReferenceClock	clock = {hardwareTime, timeInFrame, ticksPerFrame};
 	return clock;
-
 }
 
 
@@ -172,7 +183,7 @@
 // 	BMDTimeValue hardwareTime;
 // 	BMDTimeValue timeInFrame;
 // 	BMDTimeValue ticksPerFrame;
-// 	if (_deckLinkInput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)== S_OK)
+// 	if (_decklinkinput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)== S_OK)
 // 		return hardwareTime; // struct anyone?
 // }
 // 
@@ -181,7 +192,7 @@
 // 	BMDTimeValue hardwareTime;
 // 	BMDTimeValue timeInFrame;
 // 	BMDTimeValue ticksPerFrame;
-// 	if (_deckLinkInput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)== S_OK)
+// 	if (_decklinkinput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)== S_OK)
 // 		return timeInFrame; // struct anyone?
 // }
 // 
@@ -190,7 +201,7 @@
 // 	BMDTimeValue hardwareTime;
 // 	BMDTimeValue timeInFrame;
 // 	BMDTimeValue ticksPerFrame;
-// 	if (_deckLinkInput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)== S_OK)
+// 	if (_decklinkinput->GetHardwareReferenceClock(&hardwareTime, &timeInFrame, &ticksPerFrame)== S_OK)
 // 		return ticksPerFrame; // struct anyone?
 // }
 
