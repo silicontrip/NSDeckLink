@@ -12,9 +12,9 @@
 - (NSNumber*)floatForAttributeID:(BMDDeckLinkConfigurationID)cfgID;
 - (NSString*)stringForAttributeID:(BMDDeckLinkConfigurationID)cfgID;
 
-- (void)setFlag:(NSNumber*)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
-- (void)setInt:(NSNumber*)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
-- (void)setFloat:(NSNumber*)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
+- (void)setFlag:(BOOL)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
+- (void)setInt:(NSInteger)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
+- (void)setFloat:(double)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
 - (void)setString:(NSString*)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
 
 @end

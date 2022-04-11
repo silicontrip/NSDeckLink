@@ -65,4 +65,9 @@
 	return _displaymode->GetFlags();
 }
 
+- (NSString*)description
+{
+	return [NSString stringWithFormat:@"%@ \"%@\" %@x%@ %lld:%lld %u" , [super description], self.name, self.width, self.height, self.frameRate.timeValue, self.frameRate.timeScale, self.fieldDominance];
+}
+
 @end

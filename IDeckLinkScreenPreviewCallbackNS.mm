@@ -14,30 +14,29 @@ IDeckLinkScreenPreviewCallbackNS::~IDeckLinkScreenPreviewCallbackNS () {
 
 // IUnknown methods
 
-HRESULT IDeckLinkScreenPreviewCallbackNS::QueryInterface(REFIID iid, LPVOID *ppv)
+HRESULT IDeckLinkScreenPreviewCallbackNS::QueryInterface (REFIID iid, LPVOID *ppv)
 {
-	HRESULT result = S_OK;
-
-	if (ppv == nullptr)
-		return E_INVALIDARG;
-
+	CFUUIDBytes iunknown;
+	HRESULT result = E_NOINTERFACE;
+	
+	// Initialise the return result
+	*ppv = NULL;
+	
 	// Obtain the IUnknown interface and compare it the provided REFIID
-	if (iid == IID_IUnknown)
+	iunknown = CFUUIDGetUUIDBytes(IUnknownUUID);
+	if (memcmp(&iid, &iunknown, sizeof(REFIID)) == 0)
 	{
 		*ppv = this;
 		AddRef();
+		result = S_OK;
 	}
-	else if (iid == IID_IDeckLinkInputCallback)
+	else if (memcmp(&iid, &IID_IDeckLinkScreenPreviewCallback, sizeof(REFIID)) == 0)
 	{
 		*ppv = (IDeckLinkInputCallback*)this;
 		AddRef();
+		result = S_OK;
 	}
-	else
-	{
-		*ppv = nullptr;
-		result = E_NOINTERFACE;
-	}
-
+	
 	return result;
 }
 

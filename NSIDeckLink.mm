@@ -53,7 +53,7 @@
 		return nil;
 
 	IDeckLinkProfileAttributes* idpa =(IDeckLinkProfileAttributes*)lp;
-	idpa->Release();
+	// idpa->Release();
 
 	return [NSIDeckLinkProfileAttributes attributesWithIDeckLinkProfileAttributes:idpa];
 }
@@ -68,7 +68,7 @@
 		
 	// what is the retain count at this point. appears to be 2
 	IDeckLinkConfiguration* idc = (IDeckLinkConfiguration*)lp;
-	idc->Release(); // retain = 1
+	// idc->Release(); // retain = 1
 
 	//NSLog(@"release reference: %u",idc->Release());
 
@@ -83,7 +83,7 @@
 		return nil;  
 
 	IDeckLinkInput* idi = (IDeckLinkInput*)lp;
-	idi->Release();
+	// idi->Release();
 
 	return [NSIDeckLinkInput inputWithIDeckLinkInput:idi];
 }
