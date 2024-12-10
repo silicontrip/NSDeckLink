@@ -9,6 +9,7 @@
 
 - (instancetype)initWithIDeckLinkVideoFrame:(IDeckLinkVideoFrame*)frame
 {
+
 	if (self = [super initWithIUnknown:frame refiid:IID_IDeckLinkVideoFrame])
 	{
 		_videoframe = frame;
