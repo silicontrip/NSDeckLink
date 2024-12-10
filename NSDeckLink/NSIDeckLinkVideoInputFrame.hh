@@ -1,6 +1,6 @@
 #import "NSIDeckLinkVideoInputFrame.h"
 #import "NSIUnknown.hh"
-
+#import "NSIDeckLinkVideoFrame.hh"
 
 @interface NSIDeckLinkVideoInputFrame () 
 {
