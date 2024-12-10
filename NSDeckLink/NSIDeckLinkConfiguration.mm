@@ -61,27 +61,27 @@
 
 }
 
-- (void)setFlag:(BOOL)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID
+- (BOOL)setFlag:(BOOL)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID
 {
-	if (_configuration->SetFlag(cfgID, value) != S_OK)
-		NSLog(@"Error setting flag for attribute %d", cfgID);
+	return _configuration->SetFlag(cfgID, value) == S_OK;
+		//NSLog(@"Error setting flag for attribute %d", cfgID);
 }
 
-- (void)setInt:(NSInteger)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID
+- (BOOL)setInt:(NSInteger)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID
 {
 	// NSLog(@"setting int %ld for attribute %d",value, cfgID);
-	if (_configuration->SetInt(cfgID, value) != S_OK)
-		NSLog(@"Error setting int for attribute %d", cfgID);
+	return _configuration->SetInt(cfgID, value) == S_OK;
+		//NSLog(@"Error setting int for attribute %d", cfgID);
 }
-- (void)setFloat:(double)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID
+- (BOOL)setFloat:(double)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID
 {
-	if (_configuration->SetFloat(cfgID, value) != S_OK)
-		NSLog(@"Error setting float for attribute %d", cfgID);
+	return _configuration->SetFloat(cfgID, value) == S_OK;
+		//NSLog(@"Error setting float for attribute %d", cfgID);
 }
-- (void)setString:(NSString*)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID
+- (BOOL)setString:(NSString*)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID
 {
-	if (_configuration->SetString(cfgID, (CFStringRef)value) != S_OK)
-		NSLog(@"Error setting string for attribute %d", cfgID);
+	return _configuration->SetString(cfgID, (CFStringRef)value) == S_OK;
+	//NSLog(@"Error setting string for attribute %d", cfgID);
 }
 
 @end
