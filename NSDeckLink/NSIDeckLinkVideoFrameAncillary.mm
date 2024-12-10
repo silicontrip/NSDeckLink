@@ -24,7 +24,7 @@
 {
 	return _ancillary->GetDisplayMode();
 }
-- (NSData*)dataForVerticalBlankingLine:(NSInteger)lineNumber
+- (NSData*)dataForVerticalBlankingLine:(unsigned int)lineNumber
 {
 	void* data;
 	if (_ancillary->GetBufferForVerticalBlankingLine(lineNumber,&data) != S_OK)
