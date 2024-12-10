@@ -53,11 +53,15 @@
 - (NSString*)stringForAttributeID:(BMDDeckLinkAttributeID)cfgID
 {
 	CFStringRef stringvalue;
+	NSString* nsString;
 	HRESULT hr = _profileAttributes->GetString(cfgID,&stringvalue);
 	if (hr != S_OK)
 		return nil;
 
-	return (NSString*)stringvalue;
+	nsString = (NSString*)stringvalue;
+
+// apparently one of the strings is static and cannot be released.
+	return [nsString autorelease];
 
 }
 
