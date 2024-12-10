@@ -23,16 +23,30 @@
 		// _refiid = IID_IDeckLink;
 
 	 	if (_iDeckLink->GetDisplayName(&display) != S_OK)
+		{
+			[self release];
 			return nil;
+		}
 
-		self.displayName = [(NSString*)display copy]; // release?
+//		self.displayName = [(NSString*)display copy]; // release?
+		self.displayName = (NSString*)display;
 
 	 	if (_iDeckLink->GetModelName(&model) != S_OK)
+		{
+			[self release];
 			return nil;
+		}
 
-		self.modelName = [(NSString*)model copy];
+		self.modelName = (NSString*)model;
 	}
 	return self;
+}
+
+- (void)dealloc
+{
+	[modelName release];
+	[displayName release];
+	[super dealloc];
 }
 
 - (NSString*)description
