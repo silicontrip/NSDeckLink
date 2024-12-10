@@ -70,10 +70,11 @@ HRESULT IDeckLinkInputCallbackNS::VideoInputFormatChanged (/* in */ BMDVideoInpu
 
 HRESULT IDeckLinkInputCallbackNS::VideoInputFrameArrived (/* in */ IDeckLinkVideoInputFrame* videoFrame, /* in */ IDeckLinkAudioInputPacket* audioPacket)
 {
+
 	NSIDeckLinkVideoInputFrame* dlvif = [NSIDeckLinkVideoInputFrame videoInputFrameWithIDeckLinkVideoInputFrame:videoFrame];
 	NSIDeckLinkAudioInputPacket* dlaip = [NSIDeckLinkAudioInputPacket audioInputPacketWithIDeckLinkAudioInputPacket:audioPacket];
 
-	if ([_inputcallback videoInputFrameArrived:dlvif audio:dlaip])
+	if ([_inputcallback videoInputFrameArrived:dlvif audio:dlaip] == S_OK)
 		return S_OK;
 	return E_FAIL;
 }
