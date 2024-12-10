@@ -1,0 +1,7 @@
+framework module NSDeckLink {
+	umbrella header "NSDeckLink.h"
+
+	export *
+	module * { export * }
+
+}
