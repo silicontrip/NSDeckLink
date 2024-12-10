@@ -4,7 +4,6 @@
 
 - (void)release
 {
-	// NSLog(@"release: %@",self);
 	_refCount = _iunknown->Release();
 	[super release];
 }
@@ -16,8 +15,11 @@
 
 - (id)retain
 {
+
 	[super retain];
 	_refCount = _iunknown->AddRef();
+	//NSLog(@"retain: %@ refcount: %u",self,_refCount);
+
 	return self;
 }
 
@@ -55,17 +57,22 @@
 	if (self = [super init])
 	{
 		_iunknown = iunknown;
+		_refCount = _iunknown->AddRef();
+
 		_refiid = ref;
+		//_semaphore = dispatch_semaphore_create(1);
 	}
 	return self;
 }
 
+/*
 - (void)dealloc
 {
 	//CFRelease(_uuid);
 	//_iunknown->Release();
 	[super dealloc];
 }
+*/
 
 // hoping for some Objective-C magic to handle the COM interfaces
 /*
@@ -97,7 +104,8 @@
 
 - (void*)queryInterfaceWithString:(NSString*)uuid
 {
-	CFUUIDRef cfuuid = CFUUIDCreateFromString(NULL,(CFStringRef)uuid);
+	CFUUIDRef cfuuid =  CFUUIDCreateFromString(NULL,(CFStringRef)uuid);
+	CFAutorelease(cfuuid);
 	return [self queryInterfaceWithUUID:cfuuid];
 }
 
@@ -113,8 +121,11 @@
 
 - (NSString *)iunknownTypeString
 {
-	return (NSString*) CFUUIDCreateString(NULL, CFUUIDCreateFromUUIDBytes(NULL,_refiid));
+	CFUUIDRef ruid = CFUUIDCreateFromUUIDBytes(NULL,_refiid);
+	CFUUIDRef cfuuid = (CFUUIDRef)CFAutorelease(ruid);
+	CFStringRef cfuuids = (CFStringRef)CFAutorelease(CFUUIDCreateString(NULL, cfuuid));
 
+	return (NSString*)cfuuids;
 }
 
 // is REFIID cpp? no just a #define
