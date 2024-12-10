@@ -1,6 +1,5 @@
 #import "NSIDeckLinkVideoInputFrame.hh"
 
-
 @implementation NSIDeckLinkVideoInputFrame
 {
 
@@ -13,10 +12,14 @@
 
 - (instancetype)initWithIDeckLinkVideoInputFrame:(IDeckLinkVideoInputFrame*)videoInputFrame
 {
-	if (self = [super initWithIUnknown:videoInputFrame refiid:IID_IDeckLinkVideoInputFrame ])
+	if (videoInputFrame == NULL)
+		return nil;
+	if (self = [super initWithIDeckLinkVideoFrame:videoInputFrame])
 	{
 		_videoinputframe = videoInputFrame;
 	}
+	//[super retain];
+	//[super retain];
 	return self;
 }
 
@@ -48,5 +51,7 @@
 	return st;
 
 }
+
+
 
 @end
