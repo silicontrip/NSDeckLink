@@ -24,18 +24,30 @@
 
 // want to come up with a better way to report failures
 
-- (BOOL)supportsVideoModeConnection:(BMDVideoConnection)connection mode:(BMDDisplayMode)mode pixelFormat:(BMDPixelFormat)pixelFormat flags:(BMDSupportedVideoModeFlags)flags
+- (BOOL)supportsVideoModeConnection:(BMDVideoConnection)connection mode:(BMDDisplayMode)mode pixelFormat:(BMDPixelFormat)pixelFormat conversionMode:(BMDVideoOutputConversionMode)conversionMode flags:(BMDSupportedVideoModeFlags)flags actualMode:(BMDDisplayMode*)actualMode
 {
 	//BMDDisplayMode actualMode = NULL;
 	bool supported = NO;
-	BMDDisplayMode actualMode;
-//    virtual HRESULT DoesSupportVideoMode (/* in */ BMDVideoConnection connection /* If a value of 0 is specified, the caller does not care about the connection */, 
+
+	// BMDDisplayMode actualMode;
+
+	//    virtual HRESULT DoesSupportVideoMode (/* in */ BMDVideoConnection connection /* If a value of 0 is specified, the caller does not care about the connection */,
 // /* in */ BMDDisplayMode requestedMode, 
 // /* in */ BMDPixelFormat requestedPixelFormat, 
 // /* in */ BMDSupportedVideoModeFlags flags, /* out */ bool* supported) = 0;
 
+// new in BMD 12.7 
+// virtual HRESULT DoesSupportVideoMode (
+//	/* in */ BMDVideoConnection connection /* If a value of bmdVideoConnectionUnspecified is specified, the caller does not care about the connection */, 
+//	/* in */ BMDDisplayMode requestedMode,
+//	/* in */ BMDPixelFormat requestedPixelFormat, 
+//	/* in */ BMDVideoOutputConversionMode conversionMode, 
+//	/* in */ BMDSupportedVideoModeFlags flags, 
+//	/* out */ BMDDisplayMode* actualMode, 
+//	/* out */ bool* supported) = 0;
 
-	if (_decklinkinput->DoesSupportVideoMode(connection, mode, pixelFormat,  flags,  &supported) != S_OK)
+
+	if (_decklinkinput->DoesSupportVideoMode(connection, mode, pixelFormat, conversionMode, flags, actualMode, &supported) != S_OK)
 		return NO;
 	
 	return supported;
@@ -99,10 +111,10 @@
 }
 
 //EnableAudioInput (BMDAudioSampleRate sampleRate, BMDAudioSampleType sampleType, uint32_t channelCount);
-- (BOOL)enableAudioInput:(BMDAudioSampleRate)rate sampleType:(BMDAudioSampleType)type channelCount:(uint32_t)count
-{
-	return _decklinkinput->EnableAudioInput(rate, type, count) == S_OK;
-}
+//- (BOOL)enableAudioInput:(BMDAudioSampleRate)rate sampleType:(BMDAudioSampleType)type channelCount:(uint32_t)count
+//{
+//	return _decklinkinput->EnableAudioInput(rate, type, count) == S_OK;
+//}
 
 // EnableVideoInput (BMDDisplayMode displayMode, BMDPixelFormat pixelFormat, BMDVideoInputFlags flags);
 - (BOOL)enableVideoInput:(BMDDisplayMode)mode format:(BMDPixelFormat)format flags:(BMDVideoInputFlags)flags
@@ -138,7 +150,7 @@
 	return frameCount;
 }
 
-- (BOOL)enableAudioInputSampleRate:(BMDAudioSampleRate)sampleRate type:(BMDAudioSampleType)sampleType count:(NSUInteger)channelCount
+- (BOOL)enableAudioInputSampleRate:(BMDAudioSampleRate)sampleRate sampleType:(BMDAudioSampleType)sampleType channelCount:(unsigned int)channelCount
 {
 	return _decklinkinput->EnableAudioInput(sampleRate, sampleType, channelCount) == S_OK;
 }
