@@ -2,7 +2,7 @@
 #import <CoreFoundation/CoreFoundation.h>
 #import <CoreFoundation/CFPlugInCOM.h>
 //#import <CoreFoundation/CFUUID.h>
-
+#import <DeckLinkAPI/DeckLinkAPI.h>
 
 // typedef struct __CF
 
@@ -27,6 +27,5 @@
 - (void)release;
 - (NSUInteger)retainCount;
 - (id)retain;
-- (NSString *)description;
 
 @end

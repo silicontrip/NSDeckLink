@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "DeckLinkAPI.h"
+#import <DeckLinkAPI/DeckLinkAPI.h>
 #import "NSIUnknown.hh"
 #import "NSIDeckLinkInputCallback.h"
 #import "NSIDeckLinkDisplayMode.hh"

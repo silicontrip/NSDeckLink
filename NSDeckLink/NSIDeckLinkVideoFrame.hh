@@ -2,6 +2,8 @@
 #import "NSIDeckLinkTimecode.hh"
 #import "NSIDeckLinkVideoFrameAncillary.hh"
 #import "NSIUnknown.hh"
+#import <DeckLinkAPI/DeckLinkAPI.h>
+
 
 @interface NSIDeckLinkVideoFrame ()
 {

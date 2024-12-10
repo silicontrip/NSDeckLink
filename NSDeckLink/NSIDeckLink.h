@@ -1,9 +1,10 @@
 #import <Foundation/Foundation.h>
-#import "NSIUnknown.h"
-#import "DeckLinkAPI.h"
+//#import <DeckLinkAPI/DeckLinkAPI.h>
 #import "NSIDeckLinkProfileAttributes.h"
 #import "NSIDeckLinkConfiguration.h"
 #import "NSIDeckLinkInput.h"
+#import "NSIUnknown.h"
+
 
 @interface NSIDeckLink : NSIUnknown {}
 

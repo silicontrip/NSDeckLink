@@ -1,5 +1,5 @@
+#import <DeckLinkAPI/DeckLinkAPI.h>
 #import "NSIDeckLinkDisplayModeIterator.h"
-#import "DeckLinkAPI.h"
 #import "NSIUnknown.hh"
 #import "NSIDeckLinkDisplayMode.hh"
 

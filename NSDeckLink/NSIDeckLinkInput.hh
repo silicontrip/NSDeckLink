@@ -4,6 +4,7 @@
 #import "NSIDeckLinkDisplayMode.hh"
 #import "IDeckLinkInputCallbackNS.hh"
 #import "IDeckLinkScreenPreviewCallbackNS.hh"
+#import <DeckLinkAPI/DeckLinkAPI.h>
 
 
 @interface NSIDeckLinkInput ()

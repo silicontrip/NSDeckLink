@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreFoundation/CoreFoundation.h>
 #import <CoreFoundation/CFPlugInCOM.h>
+#import <DeckLinkAPI/DeckLinkAPI.h>
 //#import <CoreFoundation/CFUUID.h>
 #import "NSIUnknown.h"
 
@@ -16,6 +17,7 @@ bool operator==(const REFIID& lhs, const REFIID& rhs);
 	IUnknown *_iunknown; // internal CPP IUnknown
 	void* _reserved;
 	ULONG _refCount;
+	dispatch_semaphore_t _semaphore;
 }
 
 - (instancetype)initWithIUnknown:(IUnknown*)iunknown refiid:(REFIID)ref;

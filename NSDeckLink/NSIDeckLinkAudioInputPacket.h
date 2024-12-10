@@ -1,4 +1,4 @@
-#import "DeckLinkAPI.h"
+//#import <DeckLinkAPI/DeckLinkAPI.h>
 #import "NSIUnknown.h"
 
 @interface NSIDeckLinkAudioInputPacket : NSIUnknown

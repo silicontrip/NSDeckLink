@@ -1,4 +1,4 @@
-#import "DeckLinkAPI.h"
+//#import <DeckLinkAPI/DeckLinkAPI.h>
 #import "NSIUnknown.h"
 
 @interface NSIDeckLinkVideoFrameAncillary : NSIUnknown
@@ -8,6 +8,6 @@
 
 - (BMDPixelFormat)pixelFormat;
 - (BMDDisplayMode)displayMode;
-- (NSData*)dataForVerticalBlankingLine:(NSInteger)lineNumber;
+- (NSData*)dataForVerticalBlankingLine:(unsigned int)lineNumber;
 
 @end

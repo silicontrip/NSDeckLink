@@ -1,6 +1,6 @@
 #import "NSIDeckLinkAudioInputPacket.h"
 #import "NSIDeckLinkVideoInputFrame.h"
-#import "DeckLinkAPI.h"
+//#import <DeckLinkAPI/DeckLinkAPI.h>
 #import "NSIDeckLinkDisplayMode.h"
 
 @protocol NSIDeckLinkInputCallback <NSObject>

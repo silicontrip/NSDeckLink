@@ -1,5 +1,5 @@
 #import "NSIUnknown.h"
-#import "DeckLinkAPI.h"
+//#import <DeckLinkAPI/DeckLinkAPI.h>
 
 typedef struct {
 	uint8_t hours;

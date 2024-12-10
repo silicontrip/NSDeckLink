@@ -1,5 +1,7 @@
 #import "NSIDeckLinkConfiguration.h"
 #import "NSIUnknown.hh"
+#import <DeckLinkAPI/DeckLinkAPI.h>
+
 
 
 @interface NSIDeckLinkConfiguration () 

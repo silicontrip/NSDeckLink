@@ -1,6 +1,5 @@
 #import "NSIDeckLink.h"
-#import "DeckLinkAPI.h"
-#import "DeckLinkAPIDiscovery.h"
+#import <DeckLinkAPI/DeckLinkAPI.h>
 #import "NSIUnknown.hh"
 #import "NSIDeckLinkProfileAttributes.hh"
 #import "NSIDeckLinkConfiguration.hh"

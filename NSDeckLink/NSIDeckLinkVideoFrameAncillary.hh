@@ -1,6 +1,7 @@
-
 #import "NSIDeckLinkVideoFrameAncillary.h"
 #import "NSIUnknown.hh"
+#import <DeckLinkAPI/DeckLinkAPI.h>
+
 
 @interface NSIDeckLinkVideoFrameAncillary ()
 {

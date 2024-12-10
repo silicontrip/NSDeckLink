@@ -1,14 +1,14 @@
 #import <Foundation/Foundation.h>
-#import "DeckLinkAPI.h"
+//#import <DeckLinkAPI/DeckLinkAPI.h>
 #import "NSIUnknown.h"
-
+#import "NSIDeckLinkVideoFrame.h"
 
 typedef struct {
 	BMDTimeValue frameTime;
 	BMDTimeValue frameDuration;
 } NSBMDStreamTime;
 
-@interface NSIDeckLinkVideoInputFrame : NSIUnknown
+@interface NSIDeckLinkVideoInputFrame : NSIDeckLinkVideoFrame
 {
 
 }

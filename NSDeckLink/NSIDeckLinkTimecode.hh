@@ -1,5 +1,7 @@
 #import "NSIDeckLinkTimecode.h"
 #import "NSIUnknown.hh"
+#import <DeckLinkAPI/DeckLinkAPI.h>
+
 
 @interface NSIDeckLinkTimecode ()
 

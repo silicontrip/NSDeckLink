@@ -1,8 +1,9 @@
+#import <DeckLinkAPI/DeckLinkAPI.h>
 #import "NSIDeckLinkAudioInputPacket.h"
-#import "DeckLinkAPI.h"
 #import "NSIUnknown.hh"
 
-@interface NSIDeckLinkAudioInputPacket () {
+@interface NSIDeckLinkAudioInputPacket () 
+{
 	IDeckLinkAudioInputPacket* _audioinputpacket;
 } 
 

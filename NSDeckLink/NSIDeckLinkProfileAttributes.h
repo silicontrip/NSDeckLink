@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 #import "NSIUnknown.h"
-#import "DeckLinkAPI.h"
+//#import <DeckLinkAPI/DeckLinkAPI.h>
+
+typedef uint32_t BMDDeckLinkAttributeID;
 
 @interface NSIDeckLinkProfileAttributes : NSIUnknown {}
 

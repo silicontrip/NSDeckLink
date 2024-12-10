@@ -1,5 +1,6 @@
 #import "NSIDeckLinkProfileAttributes.h"
 #import "NSIUnknown.hh"
+#import <DeckLinkAPI/DeckLinkAPI.h>
 
 @interface NSIDeckLinkProfileAttributes () 
 {

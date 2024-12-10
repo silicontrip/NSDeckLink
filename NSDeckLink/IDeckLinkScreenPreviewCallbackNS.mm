@@ -1,5 +1,5 @@
-#include "DeckLinkAPI.h"
 #include "IDeckLinkScreenPreviewCallbackNS.hh"
+#import <DeckLinkAPI/DeckLinkAPI.h>
 #import "NSIDeckLinkScreenPreviewCallback.h"
 #import "NSIDeckLinkVideoFrame.hh"
 

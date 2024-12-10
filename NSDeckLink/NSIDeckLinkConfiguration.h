@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
+//#import <DeckLinkAPI/DeckLinkAPI.h>
 #import "NSIUnknown.h"
-#import "DeckLinkAPI.h"
 
 @interface NSIDeckLinkConfiguration : NSIUnknown 
 {
@@ -12,9 +12,9 @@
 - (NSNumber*)floatForAttributeID:(BMDDeckLinkConfigurationID)cfgID;
 - (NSString*)stringForAttributeID:(BMDDeckLinkConfigurationID)cfgID;
 
-- (void)setFlag:(BOOL)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
-- (void)setInt:(NSInteger)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
-- (void)setFloat:(double)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
-- (void)setString:(NSString*)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
+- (BOOL)setFlag:(BOOL)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
+- (BOOL)setInt:(NSInteger)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
+- (BOOL)setFloat:(double)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
+- (BOOL)setString:(NSString*)value forAttributeID:(BMDDeckLinkConfigurationID)cfgID;
 
 @end
