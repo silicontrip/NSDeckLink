@@ -7,13 +7,120 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D7443572971698C00E0BD92 /* DeckLinkAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7443562971698C00E0BD92 /* DeckLinkAPI.framework */; };
+		4D7443582971698C00E0BD92 /* DeckLinkAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7443562971698C00E0BD92 /* DeckLinkAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4DB386B22803C1FE009D9FD6 /* NSDeckLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386B02803C1FE009D9FD6 /* NSDeckLink.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB386E62803D1D8009D9FD6 /* NSIDeckLinkInputCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386B92803D1D7009D9FD6 /* NSIDeckLinkInputCallback.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB386E72803D1D8009D9FD6 /* NSIDeckLinkVideoFrameAncillary.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386BA2803D1D7009D9FD6 /* NSIDeckLinkVideoFrameAncillary.hh */; };
+		4DB386E82803D1D8009D9FD6 /* NSIDeckLinkVideoFrameAncillary.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386BB2803D1D7009D9FD6 /* NSIDeckLinkVideoFrameAncillary.mm */; };
+		4DB386E92803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386BC2803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB386EA2803D1D8009D9FD6 /* NSIUnknown.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386BD2803D1D8009D9FD6 /* NSIUnknown.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB386EB2803D1D8009D9FD6 /* NSIUnknown.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386BE2803D1D8009D9FD6 /* NSIUnknown.mm */; };
+		4DB386EC2803D1D8009D9FD6 /* NSIDeckLinkProfileAttributes.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386BF2803D1D8009D9FD6 /* NSIDeckLinkProfileAttributes.hh */; };
+		4DB386ED2803D1D8009D9FD6 /* NSIDeckLinkInput.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386C02803D1D8009D9FD6 /* NSIDeckLinkInput.hh */; };
+		4DB386EF2803D1D8009D9FD6 /* IDeckLinkInputCallbackNS.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386C22803D1D8009D9FD6 /* IDeckLinkInputCallbackNS.hh */; };
+		4DB386F02803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386C32803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.hh */; };
+		4DB386F12803D1D8009D9FD6 /* IDeckLinkScreenPreviewCallbackNS.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386C42803D1D8009D9FD6 /* IDeckLinkScreenPreviewCallbackNS.hh */; };
+		4DB386F22803D1D8009D9FD6 /* NSIUnknown.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386C52803D1D8009D9FD6 /* NSIUnknown.hh */; };
+		4DB386F42803D1D8009D9FD6 /* NSIDeckLinkTimecode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386C72803D1D8009D9FD6 /* NSIDeckLinkTimecode.mm */; };
+		4DB386F52803D1D8009D9FD6 /* NSIDeckLinkVideoInputFrame.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386C82803D1D8009D9FD6 /* NSIDeckLinkVideoInputFrame.hh */; };
+		4DB386F62803D1D8009D9FD6 /* NSIDeckLinkAudioInputPacket.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386C92803D1D8009D9FD6 /* NSIDeckLinkAudioInputPacket.mm */; };
+		4DB386F72803D1D8009D9FD6 /* NSIDeckLinkConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386CA2803D1D8009D9FD6 /* NSIDeckLinkConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB386F82803D1D8009D9FD6 /* NSIDeckLink.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386CB2803D1D8009D9FD6 /* NSIDeckLink.mm */; };
+		4DB386F92803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386CC2803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.hh */; };
+		4DB386FA2803D1D8009D9FD6 /* NSIDeckLinkProfileAttributes.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386CD2803D1D8009D9FD6 /* NSIDeckLinkProfileAttributes.mm */; };
+		4DB386FB2803D1D8009D9FD6 /* NSIDeckLinkDisplayMode.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386CE2803D1D8009D9FD6 /* NSIDeckLinkDisplayMode.hh */; };
+		4DB386FC2803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386CF2803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB386FF2803D1D8009D9FD6 /* NSIDeckLink.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386D22803D1D8009D9FD6 /* NSIDeckLink.hh */; };
+		4DB387002803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386D32803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.mm */; };
+		4DB387012803D1D8009D9FD6 /* NSIDeckLinkVideoInputFrame.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386D42803D1D8009D9FD6 /* NSIDeckLinkVideoInputFrame.mm */; };
+		4DB387022803D1D8009D9FD6 /* NSIDeckLinkIterator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386D52803D1D8009D9FD6 /* NSIDeckLinkIterator.mm */; };
+		4DB387032803D1D8009D9FD6 /* NSIDeckLinkTimecode.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386D62803D1D8009D9FD6 /* NSIDeckLinkTimecode.hh */; };
+		4DB387052803D1D8009D9FD6 /* NSIDeckLinkConfiguration.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386D82803D1D8009D9FD6 /* NSIDeckLinkConfiguration.mm */; };
+		4DB387062803D1D8009D9FD6 /* NSIDeckLinkDisplayMode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386D92803D1D8009D9FD6 /* NSIDeckLinkDisplayMode.mm */; };
+		4DB387072803D1D8009D9FD6 /* NSIDeckLinkInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386DA2803D1D8009D9FD6 /* NSIDeckLinkInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB387082803D1D8009D9FD6 /* NSIDeckLinkIterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386DB2803D1D8009D9FD6 /* NSIDeckLinkIterator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB387092803D1D8009D9FD6 /* NSIDeckLinkConfiguration.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386DC2803D1D8009D9FD6 /* NSIDeckLinkConfiguration.hh */; };
+		4DB3870B2803D1D8009D9FD6 /* IDeckLinkInputCallbackNS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386DE2803D1D8009D9FD6 /* IDeckLinkInputCallbackNS.mm */; };
+		4DB3870C2803D1D8009D9FD6 /* NSIDeckLinkInput.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386DF2803D1D8009D9FD6 /* NSIDeckLinkInput.mm */; };
+		4DB3870D2803D1D8009D9FD6 /* NSIDeckLinkAudioInputPacket.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386E02803D1D8009D9FD6 /* NSIDeckLinkAudioInputPacket.hh */; };
+		4DB3870E2803D1D8009D9FD6 /* NSIDeckLinkIterator.hh in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386E12803D1D8009D9FD6 /* NSIDeckLinkIterator.hh */; };
+		4DB387102803D1D8009D9FD6 /* NSIDeckLinkScreenPreviewCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386E32803D1D8009D9FD6 /* NSIDeckLinkScreenPreviewCallback.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB387122803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386E52803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.mm */; };
+		4DB387712809BC5A009D9FD6 /* NSIDeckLinkTimecode.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386E42803D1D8009D9FD6 /* NSIDeckLinkTimecode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB387792809BD7E009D9FD6 /* NSIDeckLinkVideoInputFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386D02803D1D8009D9FD6 /* NSIDeckLinkVideoInputFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB3877B2809BDC5009D9FD6 /* NSIDeckLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386C62803D1D8009D9FD6 /* NSIDeckLink.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB3877C2809BEA3009D9FD6 /* NSIDeckLinkVideoFrameAncillary.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386C12803D1D8009D9FD6 /* NSIDeckLinkVideoFrameAncillary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB3877D2809BEAF009D9FD6 /* IDeckLinkScreenPreviewCallbackNS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB386E22803D1D8009D9FD6 /* IDeckLinkScreenPreviewCallbackNS.mm */; };
+		4DB3877F2809BEE3009D9FD6 /* NSIDeckLinkAudioInputPacket.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386D12803D1D8009D9FD6 /* NSIDeckLinkAudioInputPacket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB38781280A22CB009D9FD6 /* NSIDeckLinkDisplayMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386DD2803D1D8009D9FD6 /* NSIDeckLinkDisplayMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DB38782280A22EB009D9FD6 /* NSIDeckLinkProfileAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB386D72803D1D8009D9FD6 /* NSIDeckLinkProfileAttributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4DB3875728099EA4009D9FD6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4D7443582971698C00E0BD92 /* DeckLinkAPI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4D7443562971698C00E0BD92 /* DeckLinkAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeckLinkAPI.framework; path = ../../../../../Library/Frameworks/DeckLinkAPI.framework; sourceTree = "<group>"; };
 		4DB386AD2803C1FE009D9FD6 /* NSDeckLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSDeckLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB386B02803C1FE009D9FD6 /* NSDeckLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSDeckLink.h; sourceTree = "<group>"; };
 		4DB386B12803C1FE009D9FD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DB386B92803D1D7009D9FD6 /* NSIDeckLinkInputCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLinkInputCallback.h; sourceTree = "<group>"; };
+		4DB386BA2803D1D7009D9FD6 /* NSIDeckLinkVideoFrameAncillary.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NSIDeckLinkVideoFrameAncillary.hh; sourceTree = "<group>"; };
+		4DB386BB2803D1D7009D9FD6 /* NSIDeckLinkVideoFrameAncillary.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSIDeckLinkVideoFrameAncillary.mm; sourceTree = "<group>"; };
+		4DB386BC2803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLinkDisplayModeIterator.h; sourceTree = "<group>"; };
+		4DB386BD2803D1D8009D9FD6 /* NSIUnknown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIUnknown.h; sourceTree = "<group>"; };
+		4DB386BE2803D1D8009D9FD6 /* NSIUnknown.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSIUnknown.mm; sourceTree = "<group>"; };
+		4DB386BF2803D1D8009D9FD6 /* NSIDeckLinkProfileAttributes.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NSIDeckLinkProfileAttributes.hh; sourceTree = "<group>"; };
+		4DB386C02803D1D8009D9FD6 /* NSIDeckLinkInput.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NSIDeckLinkInput.hh; sourceTree = "<group>"; };
+		4DB386C12803D1D8009D9FD6 /* NSIDeckLinkVideoFrameAncillary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLinkVideoFrameAncillary.h; sourceTree = "<group>"; };
+		4DB386C22803D1D8009D9FD6 /* IDeckLinkInputCallbackNS.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IDeckLinkInputCallbackNS.hh; sourceTree = "<group>"; };
+		4DB386C32803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NSIDeckLinkDisplayModeIterator.hh; sourceTree = "<group>"; };
+		4DB386C42803D1D8009D9FD6 /* IDeckLinkScreenPreviewCallbackNS.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IDeckLinkScreenPreviewCallbackNS.hh; sourceTree = "<group>"; };
+		4DB386C52803D1D8009D9FD6 /* NSIUnknown.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NSIUnknown.hh; sourceTree = "<group>"; };
+		4DB386C62803D1D8009D9FD6 /* NSIDeckLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLink.h; sourceTree = "<group>"; };
+		4DB386C72803D1D8009D9FD6 /* NSIDeckLinkTimecode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSIDeckLinkTimecode.mm; sourceTree = "<group>"; };
+		4DB386C82803D1D8009D9FD6 /* NSIDeckLinkVideoInputFrame.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NSIDeckLinkVideoInputFrame.hh; sourceTree = "<group>"; };
+		4DB386C92803D1D8009D9FD6 /* NSIDeckLinkAudioInputPacket.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSIDeckLinkAudioInputPacket.mm; sourceTree = "<group>"; };
+		4DB386CA2803D1D8009D9FD6 /* NSIDeckLinkConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLinkConfiguration.h; sourceTree = "<group>"; };
+		4DB386CB2803D1D8009D9FD6 /* NSIDeckLink.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSIDeckLink.mm; sourceTree = "<group>"; };
+		4DB386CC2803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NSIDeckLinkVideoFrame.hh; sourceTree = "<group>"; };
+		4DB386CD2803D1D8009D9FD6 /* NSIDeckLinkProfileAttributes.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSIDeckLinkProfileAttributes.mm; sourceTree = "<group>"; };
+		4DB386CE2803D1D8009D9FD6 /* NSIDeckLinkDisplayMode.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NSIDeckLinkDisplayMode.hh; sourceTree = "<group>"; };
+		4DB386CF2803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLinkVideoFrame.h; sourceTree = "<group>"; };
+		4DB386D02803D1D8009D9FD6 /* NSIDeckLinkVideoInputFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLinkVideoInputFrame.h; sourceTree = "<group>"; };
+		4DB386D12803D1D8009D9FD6 /* NSIDeckLinkAudioInputPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLinkAudioInputPacket.h; sourceTree = "<group>"; };
+		4DB386D22803D1D8009D9FD6 /* NSIDeckLink.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NSIDeckLink.hh; sourceTree = "<group>"; };
+		4DB386D32803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSIDeckLinkDisplayModeIterator.mm; sourceTree = "<group>"; };
+		4DB386D42803D1D8009D9FD6 /* NSIDeckLinkVideoInputFrame.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSIDeckLinkVideoInputFrame.mm; sourceTree = "<group>"; };
+		4DB386D52803D1D8009D9FD6 /* NSIDeckLinkIterator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSIDeckLinkIterator.mm; sourceTree = "<group>"; };
+		4DB386D62803D1D8009D9FD6 /* NSIDeckLinkTimecode.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NSIDeckLinkTimecode.hh; sourceTree = "<group>"; };
+		4DB386D72803D1D8009D9FD6 /* NSIDeckLinkProfileAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLinkProfileAttributes.h; sourceTree = "<group>"; };
+		4DB386D82803D1D8009D9FD6 /* NSIDeckLinkConfiguration.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSIDeckLinkConfiguration.mm; sourceTree = "<group>"; };
+		4DB386D92803D1D8009D9FD6 /* NSIDeckLinkDisplayMode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSIDeckLinkDisplayMode.mm; sourceTree = "<group>"; };
+		4DB386DA2803D1D8009D9FD6 /* NSIDeckLinkInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLinkInput.h; sourceTree = "<group>"; };
+		4DB386DB2803D1D8009D9FD6 /* NSIDeckLinkIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLinkIterator.h; sourceTree = "<group>"; };
+		4DB386DC2803D1D8009D9FD6 /* NSIDeckLinkConfiguration.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NSIDeckLinkConfiguration.hh; sourceTree = "<group>"; };
+		4DB386DD2803D1D8009D9FD6 /* NSIDeckLinkDisplayMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLinkDisplayMode.h; sourceTree = "<group>"; };
+		4DB386DE2803D1D8009D9FD6 /* IDeckLinkInputCallbackNS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IDeckLinkInputCallbackNS.mm; sourceTree = "<group>"; };
+		4DB386DF2803D1D8009D9FD6 /* NSIDeckLinkInput.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSIDeckLinkInput.mm; sourceTree = "<group>"; };
+		4DB386E02803D1D8009D9FD6 /* NSIDeckLinkAudioInputPacket.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NSIDeckLinkAudioInputPacket.hh; sourceTree = "<group>"; };
+		4DB386E12803D1D8009D9FD6 /* NSIDeckLinkIterator.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NSIDeckLinkIterator.hh; sourceTree = "<group>"; };
+		4DB386E22803D1D8009D9FD6 /* IDeckLinkScreenPreviewCallbackNS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IDeckLinkScreenPreviewCallbackNS.mm; sourceTree = "<group>"; };
+		4DB386E32803D1D8009D9FD6 /* NSIDeckLinkScreenPreviewCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLinkScreenPreviewCallback.h; sourceTree = "<group>"; };
+		4DB386E42803D1D8009D9FD6 /* NSIDeckLinkTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSIDeckLinkTimecode.h; sourceTree = "<group>"; };
+		4DB386E52803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSIDeckLinkVideoFrame.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D7443572971698C00E0BD92 /* DeckLinkAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -30,8 +138,10 @@
 		4DB386A32803C1FE009D9FD6 = {
 			isa = PBXGroup;
 			children = (
+				4DB387152803D3FA009D9FD6 /* BlackMagic */,
 				4DB386AF2803C1FE009D9FD6 /* NSDeckLink */,
 				4DB386AE2803C1FE009D9FD6 /* Products */,
+				4DB387292803E28B009D9FD6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -46,10 +156,70 @@
 		4DB386AF2803C1FE009D9FD6 /* NSDeckLink */ = {
 			isa = PBXGroup;
 			children = (
+				4DB386C22803D1D8009D9FD6 /* IDeckLinkInputCallbackNS.hh */,
+				4DB386DE2803D1D8009D9FD6 /* IDeckLinkInputCallbackNS.mm */,
+				4DB386C42803D1D8009D9FD6 /* IDeckLinkScreenPreviewCallbackNS.hh */,
+				4DB386E22803D1D8009D9FD6 /* IDeckLinkScreenPreviewCallbackNS.mm */,
+				4DB386C62803D1D8009D9FD6 /* NSIDeckLink.h */,
+				4DB386D22803D1D8009D9FD6 /* NSIDeckLink.hh */,
+				4DB386CB2803D1D8009D9FD6 /* NSIDeckLink.mm */,
+				4DB386D12803D1D8009D9FD6 /* NSIDeckLinkAudioInputPacket.h */,
+				4DB386E02803D1D8009D9FD6 /* NSIDeckLinkAudioInputPacket.hh */,
+				4DB386C92803D1D8009D9FD6 /* NSIDeckLinkAudioInputPacket.mm */,
+				4DB386CA2803D1D8009D9FD6 /* NSIDeckLinkConfiguration.h */,
+				4DB386DC2803D1D8009D9FD6 /* NSIDeckLinkConfiguration.hh */,
+				4DB386D82803D1D8009D9FD6 /* NSIDeckLinkConfiguration.mm */,
+				4DB386DD2803D1D8009D9FD6 /* NSIDeckLinkDisplayMode.h */,
+				4DB386CE2803D1D8009D9FD6 /* NSIDeckLinkDisplayMode.hh */,
+				4DB386D92803D1D8009D9FD6 /* NSIDeckLinkDisplayMode.mm */,
+				4DB386BC2803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.h */,
+				4DB386C32803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.hh */,
+				4DB386D32803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.mm */,
+				4DB386DA2803D1D8009D9FD6 /* NSIDeckLinkInput.h */,
+				4DB386C02803D1D8009D9FD6 /* NSIDeckLinkInput.hh */,
+				4DB386DF2803D1D8009D9FD6 /* NSIDeckLinkInput.mm */,
+				4DB386B92803D1D7009D9FD6 /* NSIDeckLinkInputCallback.h */,
+				4DB386DB2803D1D8009D9FD6 /* NSIDeckLinkIterator.h */,
+				4DB386E12803D1D8009D9FD6 /* NSIDeckLinkIterator.hh */,
+				4DB386D52803D1D8009D9FD6 /* NSIDeckLinkIterator.mm */,
+				4DB386D72803D1D8009D9FD6 /* NSIDeckLinkProfileAttributes.h */,
+				4DB386BF2803D1D8009D9FD6 /* NSIDeckLinkProfileAttributes.hh */,
+				4DB386CD2803D1D8009D9FD6 /* NSIDeckLinkProfileAttributes.mm */,
+				4DB386E32803D1D8009D9FD6 /* NSIDeckLinkScreenPreviewCallback.h */,
+				4DB386E42803D1D8009D9FD6 /* NSIDeckLinkTimecode.h */,
+				4DB386D62803D1D8009D9FD6 /* NSIDeckLinkTimecode.hh */,
+				4DB386C72803D1D8009D9FD6 /* NSIDeckLinkTimecode.mm */,
+				4DB386CF2803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.h */,
+				4DB386CC2803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.hh */,
+				4DB386E52803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.mm */,
+				4DB386C12803D1D8009D9FD6 /* NSIDeckLinkVideoFrameAncillary.h */,
+				4DB386BA2803D1D7009D9FD6 /* NSIDeckLinkVideoFrameAncillary.hh */,
+				4DB386BB2803D1D7009D9FD6 /* NSIDeckLinkVideoFrameAncillary.mm */,
+				4DB386D02803D1D8009D9FD6 /* NSIDeckLinkVideoInputFrame.h */,
+				4DB386C82803D1D8009D9FD6 /* NSIDeckLinkVideoInputFrame.hh */,
+				4DB386D42803D1D8009D9FD6 /* NSIDeckLinkVideoInputFrame.mm */,
+				4DB386BD2803D1D8009D9FD6 /* NSIUnknown.h */,
+				4DB386C52803D1D8009D9FD6 /* NSIUnknown.hh */,
+				4DB386BE2803D1D8009D9FD6 /* NSIUnknown.mm */,
 				4DB386B02803C1FE009D9FD6 /* NSDeckLink.h */,
 				4DB386B12803C1FE009D9FD6 /* Info.plist */,
 			);
 			path = NSDeckLink;
+			sourceTree = "<group>";
+		};
+		4DB387152803D3FA009D9FD6 /* BlackMagic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = BlackMagic;
+			sourceTree = "<group>";
+		};
+		4DB387292803E28B009D9FD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4D7443562971698C00E0BD92 /* DeckLinkAPI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,7 +229,37 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB387712809BC5A009D9FD6 /* NSIDeckLinkTimecode.h in Headers */,
+				4DB386E92803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.h in Headers */,
+				4DB386E62803D1D8009D9FD6 /* NSIDeckLinkInputCallback.h in Headers */,
+				4DB386FC2803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.h in Headers */,
+				4DB3877C2809BEA3009D9FD6 /* NSIDeckLinkVideoFrameAncillary.h in Headers */,
+				4DB387082803D1D8009D9FD6 /* NSIDeckLinkIterator.h in Headers */,
+				4DB387072803D1D8009D9FD6 /* NSIDeckLinkInput.h in Headers */,
+				4DB386F72803D1D8009D9FD6 /* NSIDeckLinkConfiguration.h in Headers */,
+				4DB386EA2803D1D8009D9FD6 /* NSIUnknown.h in Headers */,
+				4DB387102803D1D8009D9FD6 /* NSIDeckLinkScreenPreviewCallback.h in Headers */,
+				4DB3870D2803D1D8009D9FD6 /* NSIDeckLinkAudioInputPacket.hh in Headers */,
+				4DB387032803D1D8009D9FD6 /* NSIDeckLinkTimecode.hh in Headers */,
+				4DB386F52803D1D8009D9FD6 /* NSIDeckLinkVideoInputFrame.hh in Headers */,
+				4DB3877B2809BDC5009D9FD6 /* NSIDeckLink.h in Headers */,
+				4DB3870E2803D1D8009D9FD6 /* NSIDeckLinkIterator.hh in Headers */,
+				4DB386EC2803D1D8009D9FD6 /* NSIDeckLinkProfileAttributes.hh in Headers */,
+				4DB386EF2803D1D8009D9FD6 /* IDeckLinkInputCallbackNS.hh in Headers */,
+				4DB386F12803D1D8009D9FD6 /* IDeckLinkScreenPreviewCallbackNS.hh in Headers */,
+				4DB386F92803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.hh in Headers */,
+				4DB386F22803D1D8009D9FD6 /* NSIUnknown.hh in Headers */,
+				4DB38781280A22CB009D9FD6 /* NSIDeckLinkDisplayMode.h in Headers */,
+				4DB386E72803D1D8009D9FD6 /* NSIDeckLinkVideoFrameAncillary.hh in Headers */,
+				4DB386F02803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.hh in Headers */,
 				4DB386B22803C1FE009D9FD6 /* NSDeckLink.h in Headers */,
+				4DB386ED2803D1D8009D9FD6 /* NSIDeckLinkInput.hh in Headers */,
+				4DB3877F2809BEE3009D9FD6 /* NSIDeckLinkAudioInputPacket.h in Headers */,
+				4DB386FB2803D1D8009D9FD6 /* NSIDeckLinkDisplayMode.hh in Headers */,
+				4DB38782280A22EB009D9FD6 /* NSIDeckLinkProfileAttributes.h in Headers */,
+				4DB387092803D1D8009D9FD6 /* NSIDeckLinkConfiguration.hh in Headers */,
+				4DB387792809BD7E009D9FD6 /* NSIDeckLinkVideoInputFrame.h in Headers */,
+				4DB386FF2803D1D8009D9FD6 /* NSIDeckLink.hh in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +274,7 @@
 				4DB386A92803C1FE009D9FD6 /* Sources */,
 				4DB386AA2803C1FE009D9FD6 /* Frameworks */,
 				4DB386AB2803C1FE009D9FD6 /* Resources */,
+				4DB3875728099EA4009D9FD6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,6 +331,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB386EB2803D1D8009D9FD6 /* NSIUnknown.mm in Sources */,
+				4DB386F82803D1D8009D9FD6 /* NSIDeckLink.mm in Sources */,
+				4DB386E82803D1D8009D9FD6 /* NSIDeckLinkVideoFrameAncillary.mm in Sources */,
+				4DB386FA2803D1D8009D9FD6 /* NSIDeckLinkProfileAttributes.mm in Sources */,
+				4DB387122803D1D8009D9FD6 /* NSIDeckLinkVideoFrame.mm in Sources */,
+				4DB3870B2803D1D8009D9FD6 /* IDeckLinkInputCallbackNS.mm in Sources */,
+				4DB387062803D1D8009D9FD6 /* NSIDeckLinkDisplayMode.mm in Sources */,
+				4DB386F42803D1D8009D9FD6 /* NSIDeckLinkTimecode.mm in Sources */,
+				4DB3870C2803D1D8009D9FD6 /* NSIDeckLinkInput.mm in Sources */,
+				4DB387002803D1D8009D9FD6 /* NSIDeckLinkDisplayModeIterator.mm in Sources */,
+				4DB387012803D1D8009D9FD6 /* NSIDeckLinkVideoInputFrame.mm in Sources */,
+				4DB387022803D1D8009D9FD6 /* NSIDeckLinkIterator.mm in Sources */,
+				4DB3877D2809BEAF009D9FD6 /* IDeckLinkScreenPreviewCallbackNS.mm in Sources */,
+				4DB387052803D1D8009D9FD6 /* NSIDeckLinkConfiguration.mm in Sources */,
+				4DB386F62803D1D8009D9FD6 /* NSIDeckLinkAudioInputPacket.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +356,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLY_RULES_IN_COPY_HEADERS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ADDRESS_SANITIZER_CONTAINER_OVERFLOW = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -174,6 +393,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = /Library/Frameworks;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -202,6 +422,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLY_RULES_IN_COPY_HEADERS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ADDRESS_SANITIZER_CONTAINER_OVERFLOW = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -236,6 +459,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = /Library/Frameworks;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -247,6 +471,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -256,12 +481,19 @@
 		4DB386B62803C1FE009D9FD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = NSDeckLink/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -278,12 +510,19 @@
 		4DB386B72803C1FE009D9FD6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = NSDeckLink/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -291,6 +530,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = net.silicontrip.NSDeckLink;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
