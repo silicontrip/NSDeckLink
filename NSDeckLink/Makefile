@@ -21,11 +21,11 @@ RESOURCES_DIR=$(FRAMEWORK_DIR)/Versions/A/Resources
 MODULE_DIR=$(FRAMEWORK_DIR)/Versions/A/Modules
 
 # Public headers
-HEADERS=NSIDeckLink.h \
-        NSIDeckLinkAudioInputPacket.h NSIDeckLinkConfiguration.h NSIDeckLinkDisplayMode.h \
-        NSIDeckLinkDisplayModeIterator.h NSIDeckLinkInput.h NSIDeckLinkIterator.h \
-        NSIDeckLinkProfileAttributes.h NSIDeckLinkTimecode.h NSIDeckLinkVideoFrame.h \
-        NSIDeckLinkVideoFrameAncillary.h NSIDeckLinkVideoInputFrame.h NSIUnknown.h
+HEADERS= NSDeckLink.h NSIDeckLink.h NSIDeckLinkAudioInputPacket.h NSIDeckLinkConfiguration.h \
+	NSIDeckLinkDisplayMode.h NSIDeckLinkDisplayModeIterator.h NSIDeckLinkInput.h NSIDeckLinkInputCallback.h \
+	NSIDeckLinkIterator.h NSIDeckLinkProfileAttributes.h NSIDeckLinkScreenPreviewCallback.h \
+	NSIDeckLinkTimecode.h NSIDeckLinkVideoFrame.h NSIDeckLinkVideoFrameAncillary.h \
+	NSIDeckLinkVideoInputFrame.h NSIUnknown.h
 
 # Targets
 all: $(FRAMEWORK_DIR)
