@@ -30,6 +30,13 @@
 	
 }
 
+- (void)bytes:(void**)data
+{
+	if ( _audioinputpacket->GetBytes(data) != S_OK)
+		*data = NULL;
+}
+
+
 - (NSData*)bytes
 {
 	void* data;
@@ -49,6 +56,30 @@
 	//cannot use dataWithBytesNoCopy as NSData will attempt to free the buffer when released but the Decklink API will also free it.
 	return [NSData dataWithBytes:data length:dlen];
 	
+}
+
+- (NSData*)bytesWithSampleSize:(NSUInteger)sampleSize {
+    if (sampleSize == 0) {
+       NSLog(@"Invalid sample size: must be greater than 0");
+        return nil;
+    }
+
+    void* data = NULL;
+    if (_audioinputpacket->GetBytes(&data) != S_OK) {
+        NSLog(@"Failed to retrieve audio data from Decklink.");
+        return nil;
+    }
+
+    NSInteger frameCount = _audioinputpacket->GetSampleFrameCount();
+    if (frameCount <= 0) {
+        NSLog(@"Invalid frame count: %ld", frameCount);
+        return nil;
+    }
+
+    NSUInteger dataLength = frameCount * sampleSize;
+
+    // Return an NSData object with the correct length
+    return [NSData dataWithBytes:data length:dataLength];
 }
 
 @end

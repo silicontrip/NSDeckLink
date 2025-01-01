@@ -7,7 +7,9 @@
 }
 
 - (NSInteger)sampleFrameCount;
-- (NSData*)bytes;
+- (NSData*)bytes;  // will deprecate this
+- (void)bytes:(void**)data;
+- (NSData*)bytesWithSampleSize:(NSUInteger)sampleSize;
 - (BMDTimeValue)packetTimeWithScale:(BMDTimeScale)timeScale;
 
 @end
